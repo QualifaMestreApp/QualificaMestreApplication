@@ -4,7 +4,7 @@ public class Master {
 
 
 
-    //private String key;
+    private String key;
     private String name;
     private String institution;
     private String grade;
@@ -38,13 +38,13 @@ public class Master {
         this.grade = grade;
     }
 
-//    public String getKey() {
-//        return key;
-//    }
-//
-//    public void setKey(String key) {
-//        this.key = key;
-//    }
+    public String getKey() {
+        return key;
+    }
+
+    public void setKey(String key) {
+        this.key = key;
+    }
 
     public String getVoters() {
         return voters;
