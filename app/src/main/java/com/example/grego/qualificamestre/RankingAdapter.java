@@ -27,7 +27,6 @@ public class RankingAdapter extends RecyclerView.Adapter<RankingAdapter.MasterVi
     private int NORMAL_CARD = 1;
     private int EMPTY_CARD = 2;
 
-
     public RankingAdapter() {
         this.snapshotList = new ArrayList<>();
 
@@ -82,8 +81,6 @@ public class RankingAdapter extends RecyclerView.Adapter<RankingAdapter.MasterVi
             View emptyCard = LayoutInflater.from(parent.getContext()).inflate(R.layout.empty_layout,parent,false);
             return new MasterViewHolder(emptyCard);
         }
-
-
 
     }
 
