@@ -97,13 +97,13 @@ public class RankingAdapter extends RecyclerView.Adapter<RankingAdapter.MasterVi
 
             Master master = masterSnapshot.getValue(Master.class);
 
+
             MasterViewHolder mvh = holder;
 
-            mvh.name.setText(master.getName());
-            mvh.institution.setText(master.getInstitution());
-            mvh.voters.setText(master.getVoters());
+            mvh.name.setText(master.name);
+            mvh.institution.setText(master.institution);
+            mvh.voters.setText(master.grade.toString());
         }
-
     }
 
     @Override

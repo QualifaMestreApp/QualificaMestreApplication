@@ -16,7 +16,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void gogogo(View view){
-        Intent intent = new Intent(this,MasterMainActivity.class);
+        Intent intent = new Intent(MainActivity.this, MasterMainActivity.class);
         startActivity(intent);
     }
 
