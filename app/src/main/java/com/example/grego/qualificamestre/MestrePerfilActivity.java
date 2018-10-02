@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import java.io.Serializable;
@@ -32,14 +33,15 @@ public class MestrePerfilActivity extends AppCompatActivity {
     private TextView votosTextView;
     private TextView instituicoesTextView;
     private TextView disciplinasTextView;
-
     private TextView notaFinalTextView;
-
     private TextView matrerialTextView;
     private TextView networkingTextView;
     private TextView ajudaTextView;
     private TextView conhecimentosExtraTextView;
     private TextView assiduidadeTextView;
+
+    private Button votar;
+    private Button modificarVoto;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +58,9 @@ public class MestrePerfilActivity extends AppCompatActivity {
         ajudaTextView= (TextView) findViewById(R.id.ajuda);
         conhecimentosExtraTextView= (TextView) findViewById(R.id.conhecimento);
         assiduidadeTextView= (TextView) findViewById(R.id.assiduidade);
+
+        votar=(Button) findViewById(R.id.votar);
+        modificarVoto=(Button) findViewById(R.id.mudarVoto);
 
         //Todo: Fazer funcção que pege o Professor do FB (verção FINAL)
         //Todo: Pegar id do aluno Logado(verção FINAL)
@@ -96,22 +101,28 @@ public class MestrePerfilActivity extends AppCompatActivity {
             networking+=aluno.getNetworking();
             ajuda+=aluno.getAjuda();
             conhecimentosExtra+=aluno.getConhecimentosExtra();
-            assiduidade=aluno.getAssiduidade();
+            assiduidade+=aluno.getAssiduidade();
+        }
+
+        if (ALunoVotou==false){
+            votar.setVisibility(View.VISIBLE);
+        }else {
+            modificarVoto.setVisibility(View.VISIBLE);
         }
 
         int numeroDeAlunosqueVotaram=mestreTeste.getAlunosQueVotaram().size();
         int mediaFinal = ((matrerial+networking+ajuda+conhecimentosExtra+assiduidade)/numeroDeAlunosqueVotaram)/numeroDeQuestoes;
 
         nomeTextView.setText(mestreTeste.nome);
-        votosTextView.setText(mestreTeste.getAlunosQueVotaram().size());
+        votosTextView.setText(""+mestreTeste.getAlunosQueVotaram().size());
         instituicoesTextView.setText(mestreTeste.getInstituição());
         disciplinasTextView.setText(mestreTeste.getDisciplina());
-        notaFinalTextView.setText(mediaFinal);
-        matrerialTextView.setText(matrerial/numeroDeAlunosqueVotaram);
-        networkingTextView.setText(networking/numeroDeAlunosqueVotaram);
-        ajudaTextView.setText(ajuda/numeroDeAlunosqueVotaram);
-        conhecimentosExtraTextView.setText(conhecimentosExtra/numeroDeAlunosqueVotaram);
-        assiduidadeTextView.setText(assiduidade/numeroDeAlunosqueVotaram);
+        notaFinalTextView.setText(""+mediaFinal);
+        matrerialTextView.setText(""+matrerial/numeroDeAlunosqueVotaram);
+        networkingTextView.setText(""+networking/numeroDeAlunosqueVotaram);
+        ajudaTextView.setText(""+ajuda/numeroDeAlunosqueVotaram);
+        conhecimentosExtraTextView.setText(""+conhecimentosExtra/numeroDeAlunosqueVotaram);
+        assiduidadeTextView.setText(""+assiduidade/numeroDeAlunosqueVotaram);
     }
 
     public void votar(View view) {

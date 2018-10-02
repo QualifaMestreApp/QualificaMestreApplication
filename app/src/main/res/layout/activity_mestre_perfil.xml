@@ -62,45 +62,55 @@
             android:textSize="21dp"/>
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/instituicoesHead"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:id="@+id/profDetalhes"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/notaHolder"
-        android:text="Instituições: "/>
+        android:gravity="center"
+        android:layout_marginBottom="21dp">
 
-    <TextView
-        android:id="@+id/instituicoes"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_toRightOf="@id/instituicoesHead"
-        android:layout_alignBaseline="@id/instituicoesHead"
-        android:text="Instituição1\ninsti2\ninsti3"
-        android:layout_marginRight="10dp"
-        android:layout_marginBottom="21dp"/>
+        <TextView
+            android:id="@+id/instituicoesHead"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/notaHolder"
+            android:text="Instituições: " />
 
-    <TextView
-        android:id="@+id/disciplinasHead"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_toRightOf="@+id/instituicoes"
-        android:layout_alignBaseline="@id/instituicoesHead"
-        android:text="Disciplinas: "/>
+        <TextView
+            android:id="@+id/instituicoes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/instituicoesHead"
+            android:layout_alignBaseline="@id/instituicoesHead"
+            android:text="Instituição1\ninsti2\ninsti3"
+            android:layout_marginRight="10dp"
+            />
 
-    <TextView
-        android:id="@+id/disciplinas"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_toRightOf="@id/disciplinasHead"
-        android:layout_alignBaseline="@id/disciplinasHead"
-        android:text="disciplina1\ndisciplina2\ndisciplina3"/>
+        <TextView
+            android:id="@+id/disciplinasHead"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/instituicoes"
+            android:layout_alignBaseline="@id/instituicoesHead"
+            android:text="Disciplinas: "/>
+
+        <TextView
+            android:id="@+id/disciplinas"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/disciplinasHead"
+            android:layout_alignBaseline="@id/disciplinasHead"
+            android:text="disciplina1\ndisciplina2\ndisciplina3"/>
+
+    </LinearLayout>
 
 
     <TextView
         android:id="@+id/mediaDeNotas"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/instituicoes"
+        android:layout_below="@id/profDetalhes"
         android:text="Media De Notas: "
         android:textSize="21dp"
         android:layout_marginBottom="7dp"/>
@@ -220,9 +230,8 @@
         android:layout_toRightOf="@id/assiduidade"
         android:layout_alignBaseline="@id/assiduidadeHead"/>
 
-
-
     <android.support.v7.widget.AppCompatButton
+        android:id="@+id/votar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Votar"
@@ -230,6 +239,7 @@
         android:visibility="gone"
         android:onClick="votar"/>
     <android.support.v7.widget.AppCompatButton
+        android:id="@+id/mudarVoto"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Mudar Voto"
