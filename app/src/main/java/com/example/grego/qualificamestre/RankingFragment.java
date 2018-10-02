@@ -35,6 +35,8 @@ public class RankingFragment extends Fragment{
 
         mMasterRecyclerView.setAdapter(mRankingAdapter);
 
+
+
         return rootView;
     }
 

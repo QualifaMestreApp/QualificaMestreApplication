@@ -1,19 +1,69 @@
 package com.example.grego.qualificamestre;
 
+import java.util.List;
+
 public class Master {
 
     public Master() {
     }
 
-    public Master(String name, String institution, Long grade, String voters) {
-        this.name = name;
-        this.institution = institution;
-        this.grade = grade;
+    public Master(String name, String institution, String grade, List<String> voters) {
+        this.Nome = name;
+        this.Institution = institution;
+        this.Grade = grade;
+        this.Voters = voters;
     }
 
-    public String name;
-    public String institution;
-    public Long grade;
+    private String Nome;
+    private String Institution;
+    private String Grade;
+    private List<String> Voters;
+    private int VotersCount;
+
+    public int getVotersCount() {
+        return Voters.size();
+    }
+
+    public void setVotersCount(int votersCount) {
+        VotersCount = votersCount;
+    }
+
+    public String getNome() {
+        return Nome;
+    }
+
+    public void setNome(String nome) {
+        Nome = nome;
+    }
+
+    public String getInstitution() {
+        return Institution;
+    }
+
+    public void setInstitution(String institution) {
+        Institution = institution;
+    }
+
+    public String getGrade() {
+        return Grade;
+    }
+
+    public void setGrade(String grade) {
+        Grade = grade;
+    }
+
+    public List<String> getVoters() {
+        return Voters;
+    }
+
+    public void setVoters(List<String> voters) {
+        Voters = voters;
+    }
+
+
+
+
+
 
 
 }
