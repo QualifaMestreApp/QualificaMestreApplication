@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -27,10 +28,25 @@ public class MestrePerfilActivity extends AppCompatActivity {
 
     private Intent intent;
 
+    private TextView nomeTextView;
+    private TextView votosTextView;
+    private TextView instituicoesTextView;
+    private TextView disciplinasTextView;
+
+    private TextView notaFinalTextView;
+
+    private TextView matrerialTextView;
+    private TextView networkingTextView;
+    private TextView ajudaTextView;
+    private TextView conhecimentosExtraTextView;
+    private TextView assiduidadeTextView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mestre_perfil);
+
+        nomeTextView= (TextView) findViewById(R.id.nomeProf);
 
         //Todo: Fazer funcção que pege o Professor do FB (verção FINAL)
         //Todo: Pegar id do aluno Logado(verção FINAL)

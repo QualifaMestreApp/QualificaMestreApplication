@@ -85,7 +85,7 @@
         android:layout_height="wrap_content"
         android:layout_toRightOf="@+id/instituicoes"
         android:layout_alignBaseline="@id/instituicoesHead"
-        android:text="Instituições: "/>
+        android:text="Disciplinas: "/>
 
     <TextView
         android:id="@+id/disciplinas"
