@@ -20,7 +20,8 @@
         <activity
             android:name=".CadastroActivity"
             android:label="@string/title_activity_cadastro"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".MestrePerfilActivity"></activity>
     </application>
 
 </manifest>

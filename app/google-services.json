@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "9463088373",
+    "firebase_url": "https://qualificamestretestapagar.firebaseio.com",
+    "project_id": "qualificamestretestapagar",
+    "storage_bucket": "qualificamestretestapagar.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:9463088373:android:ee2cfe71396f897a",
+        "android_client_info": {
+          "package_name": "com.example.grego.qualificamestre"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "9463088373-o1pp8prhbgmm7av4d2f9sou809k8ik61.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.grego.qualificamestre",
+            "certificate_hash": "acdf42a8a3d93b569fcbb8a164246c2a7957630e"
+          }
+        },
+        {
+          "client_id": "9463088373-bcpmifbds92g48f9iej92vuq2b0svm1j.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCVp50GkJj36jFJcWUGHw-RDgsPMlj7Jz8"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "9463088373-bcpmifbds92g48f9iej92vuq2b0svm1j.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -23,6 +23,7 @@ public class LoginActivity extends AppCompatActivity {
     Button cadastrar, login;
     private FirebaseAuth mAuth;
 
+    private Intent intent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,5 +76,10 @@ public class LoginActivity extends AppCompatActivity {
         super.onStart();
         // Check if user is signed in (non-null) and update UI accordingly.
         FirebaseUser currentUser = mAuth.getCurrentUser();
+    }
+
+    public void goProf(View view) {
+        intent = new Intent(LoginActivity.this, MestrePerfilActivity.class);
+        startActivity(intent);
     }
 }
