@@ -120,17 +120,10 @@ public class MasterMainActivity extends AppCompatActivity {
             return 2;
         }
 
-//        @Override
-//        public CharSequence getPageTitle(int position){
-//            switch (position){
-//                case 0:
-//                    return "Buscar";
-//
-//                case 1:
-//                    return "Ranking";
-//            }
-//            return null;
-//        }
+
+
+
+
 
     }
 }

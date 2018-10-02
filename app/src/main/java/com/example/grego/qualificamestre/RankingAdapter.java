@@ -15,17 +15,20 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 public class RankingAdapter extends RecyclerView.Adapter<RankingAdapter.MasterViewHolder>{
 
     private MasterRecyclerViewCardListener mMasterRecyclerViewCardListener;
     private List<DataSnapshot> snapshotList;
+    private List<Master> masterList = new ArrayList<>();
     private FirebaseDatabase firebaseInstance;
     private DatabaseReference firebaseReference;
     private String MASTER_PATH = "Professores";
     private int NORMAL_CARD = 1;
     private int EMPTY_CARD = 2;
+
 
     public RankingAdapter() {
         this.snapshotList = new ArrayList<>();
@@ -41,7 +44,7 @@ public class RankingAdapter extends RecyclerView.Adapter<RankingAdapter.MasterVi
 
             @Override
             public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-
+                notifyDataSetChanged();
             }
 
             @Override
@@ -90,16 +93,17 @@ public class RankingAdapter extends RecyclerView.Adapter<RankingAdapter.MasterVi
         int viewType = holder.getItemViewType();
         if(viewType == NORMAL_CARD){
 
-            DataSnapshot masterSnapshot = snapshotList.get(position);
+            //DataSnapshot masterSnapshot = snapshotList.get(position);
 
-            Master master = masterSnapshot.getValue(Master.class);
+            //Master master = masterSnapshot.getValue(Master.class);
 
+            Master master = masterList.get(position);
 
             MasterViewHolder mvh = holder;
 
-            mvh.name.setText(master.name);
-            mvh.institution.setText(master.institution);
-            mvh.voters.setText(master.grade.toString());
+            mvh.name.setText(master.getNome());
+            mvh.institution.setText(master.getInstitution());
+            mvh.voters.setText(String.valueOf(master.getVotersCount()));
         }
     }
 
@@ -140,9 +144,16 @@ public class RankingAdapter extends RecyclerView.Adapter<RankingAdapter.MasterVi
     }
 
     public void addUser(DataSnapshot dataSnapshot){
+
         snapshotList.add(0,dataSnapshot);
+        masterList.add(dataSnapshot.getValue(Master.class));
+        masterList.sort(Comparator.comparing(Master::getVotersCount).reversed());
+
         notifyDataSetChanged();
-    }
+
+}
+
+
 
 
 }
