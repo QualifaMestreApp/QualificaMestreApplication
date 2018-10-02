@@ -21,7 +21,8 @@
             android:name=".CadastroActivity"
             android:label="@string/title_activity_cadastro"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".MestrePerfilActivity"></activity>
+        <activity android:name=".MestrePerfilActivity" />
+        <activity android:name=".VotoFormularioActivity"></activity>
     </application>
 
 </manifest>

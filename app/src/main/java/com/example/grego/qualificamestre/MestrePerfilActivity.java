@@ -12,6 +12,8 @@ public class MestrePerfilActivity extends AppCompatActivity {
 
     private Mestre mestreTeste=new Mestre();
 
+    AlunoVoto alunoLogado=new AlunoVoto();
+
     private boolean ALunoVotou=false;
 
     private int matrerial=0;
@@ -27,10 +29,22 @@ public class MestrePerfilActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mestre_perfil);
 
-        //Todo: Fazer funcção que pege o Professor do FB (verção final)
-        //Todo: Pegar id do aluno Logado(verção final)
+        //Todo: Fazer funcção que pege o Professor do FB (verção FINAL)
+        //Todo: Pegar id do aluno Logado(verção FINAL)
 
-        AlunoVoto alunoLogado= new AlunoVoto("0",4,0,3,4,5);
+        alunoLogado= new AlunoVoto("0");
+
+        if (savedInstanceState == null) {
+            Intent intentGeter = getIntent();
+            Bundle extras = intentGeter.getExtras();
+            if(extras == null) {
+                alunoLogado= new AlunoVoto("0");
+            } else {
+                alunoLogado= (AlunoVoto) intentGeter.getSerializableExtra("VotoJaFeito");
+            }
+        } else {
+            alunoLogado= (AlunoVoto) savedInstanceState.getSerializable("VotoJaFeito");
+        }
 
         List<AlunoVoto> alunosJaVotados= new ArrayList<>();
         AlunoVoto aluno1=new AlunoVoto("1",3,2,4,5,3);
@@ -56,12 +70,14 @@ public class MestrePerfilActivity extends AppCompatActivity {
     }
 
     public void votar(View view) {
-        intent = new Intent(MestrePerfilActivity.this, null/*MestrePerfilActivity.class*/);
+        intent = new Intent(this, VotoFormularioActivity.class);
         startActivity(intent);
     }
 
     public void mudarVoto(View view) {
-        intent = new Intent(MestrePerfilActivity.this, null);
+        //Todo:Caso ja exista o voto proucurar ele no FB por id em Mestre e enviar para a proxima activity ou envia so o id do aluno logado (verção FINAL)
+        intent = new Intent(this, VotoFormularioActivity.class);
+        intent.putExtra("VotoJaFeito", alunoLogado);
         startActivity(intent);
     }
 }

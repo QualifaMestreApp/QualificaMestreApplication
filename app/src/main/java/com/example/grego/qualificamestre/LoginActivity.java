@@ -79,7 +79,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void goProf(View view) {
-        intent = new Intent(LoginActivity.this, MestrePerfilActivity.class);
+        intent = new Intent(this, MestrePerfilActivity.class);
         startActivity(intent);
     }
 }

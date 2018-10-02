@@ -4,6 +4,10 @@ public class AlunoVoto {
 
     public AlunoVoto(){}
 
+    public AlunoVoto(String id){
+        this.id = id;
+    }
+
     public AlunoVoto(String id,int matrerial, int networking,int ajuda,int conhecimentosExtra,int assiduidade){
         this.id = id;
         this.matrerial = matrerial;
