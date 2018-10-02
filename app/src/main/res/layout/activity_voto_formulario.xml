@@ -1,9 +1,200 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".VotoFormularioActivity">
+    tools:context=".VotoFormularioActivity"
+    android:orientation="vertical">
 
-</android.support.constraint.ConstraintLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_margin="7dp">
+        <TextView
+            android:id="@+id/nompeProf"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nome Prof"
+            android:textSize="21dp"
+            android:layout_marginBottom="21dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Matrerial"
+            android:textSize="14dp"/>
+
+        <RadioGroup
+            android:id="@+id/matrerialSelect"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:layout_marginBottom="14dp">
+            <RadioButton android:id="@+id/radio_inutil0"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Inutil"/>
+            <RadioButton android:id="@+id/radio_antiguado0"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Antiguado"/>
+            <RadioButton android:id="@+id/radio_razoavel0"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Razoavel"/>
+            <RadioButton android:id="@+id/radio_bom0"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Bom"/>
+            <RadioButton android:id="@+id/radio_mudou_a_minha_vida0"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Mudou A Minha Vida"/>
+        </RadioGroup>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Networking"
+            android:textSize="14dp" />
+
+        <RadioGroup
+            android:id="@+id/networkingSelect"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:layout_marginBottom="14dp">
+            <RadioButton android:id="@+id/radio_inutil"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Inutil"/>
+            <RadioButton android:id="@+id/radio_antiguado1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Falei Com Alguma Coisa"/>
+            <RadioButton android:id="@+id/radio_razoavel1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Falei Com Pessoas"/>
+            <RadioButton android:id="@+id/radio_bom1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Fiz Amizades"/>
+            <RadioButton android:id="@+id/radio_mudou_a_minha_vida1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Posso Roubar Um Banco E Sair Ilezo"/>
+        </RadioGroup>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ajuda"
+            android:textSize="14dp" />
+
+        <RadioGroup
+            android:id="@+id/ajudaSelect"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:layout_marginBottom="14dp">
+            <RadioButton android:id="@+id/radio_inuti2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Inutil"/>
+            <RadioButton android:id="@+id/radio_antiguado2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nem podria me ajudar a encontrar a cabeça"/>
+            <RadioButton android:id="@+id/radio_razoavel2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Falou para proucurar no google"/>
+            <RadioButton android:id="@+id/radio_bom2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Sentou e ajutou a me encontrar"/>
+            <RadioButton android:id="@+id/radio_mudou_a_minha_vida2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Me fez passar de ano e me encontrou um trabalho"/>
+        </RadioGroup>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Conhecimento"
+            android:textSize="14dp" />
+
+        <RadioGroup
+            android:id="@+id/conhecimentoSelect"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:layout_marginBottom="14dp">
+            <RadioButton android:id="@+id/radio_inuti3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Inutil"/>
+            <RadioButton android:id="@+id/radio_antiguado3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Pior que os Alunos"/>
+            <RadioButton android:id="@+id/radio_razoavel3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nariz de papel"/>
+            <RadioButton android:id="@+id/radio_bom3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Oratorio Exemplar"/>
+            <RadioButton android:id="@+id/radio_mudou_a_minha_vida3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Mestre"/>
+        </RadioGroup>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Assiduidade"
+            android:textSize="14dp" />
+
+        <RadioGroup
+            android:id="@+id/assiduidadeSelect"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:layout_marginBottom="14dp">
+            <RadioButton android:id="@+id/radio_inuti4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Fantasma"/>
+            <RadioButton android:id="@+id/radio_antiguado4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Deja Vu"/>
+            <RadioButton android:id="@+id/radio_razoavel4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nunca falta"/>
+            <RadioButton android:id="@+id/radio_bom4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Flash"/>
+            <RadioButton android:id="@+id/radio_mudou_a_minha_vida4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Moblilia da Escola"/>
+        </RadioGroup>
+    </LinearLayout>
+
+</ScrollView>

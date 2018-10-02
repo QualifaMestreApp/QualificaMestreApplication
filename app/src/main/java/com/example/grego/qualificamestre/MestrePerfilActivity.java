@@ -82,7 +82,7 @@ public class MestrePerfilActivity extends AppCompatActivity {
             alunoLogado= (AlunoVoto) savedInstanceState.getSerializable("VotoJaFeito");
             alunosJaVotados.add(alunoLogado);
         }
-
+        //alunosJaVotados.add(alunoLogado);
         AlunoVoto aluno1=new AlunoVoto("1",3,3,3,3,3);
         AlunoVoto aluno2=new AlunoVoto("2",3,3,3,3,3);
         AlunoVoto aluno3=new AlunoVoto("3",3,3,3,3,3);

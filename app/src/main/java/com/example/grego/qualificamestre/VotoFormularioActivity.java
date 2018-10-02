@@ -8,6 +8,9 @@ public class VotoFormularioActivity extends AppCompatActivity {
 
     private Intent intent = getIntent();
 
+    //Todo:Pegar id de quem esta logado pelo FB
+    //int idDeAlunnoLogado;
+
     private String nomeProf="Error";
     private AlunoVoto alunoLogado=new AlunoVoto();
 
