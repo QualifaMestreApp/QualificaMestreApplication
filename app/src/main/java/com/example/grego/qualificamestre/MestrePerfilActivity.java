@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,6 +16,8 @@ public class MestrePerfilActivity extends AppCompatActivity {
     AlunoVoto alunoLogado=new AlunoVoto();
 
     private boolean ALunoVotou=false;
+
+    private final int numeroDeQuestoes = 5;
 
     private int matrerial=0;
     private int networking=0;
@@ -32,7 +35,9 @@ public class MestrePerfilActivity extends AppCompatActivity {
         //Todo: Fazer funcção que pege o Professor do FB (verção FINAL)
         //Todo: Pegar id do aluno Logado(verção FINAL)
 
-        alunoLogado= new AlunoVoto("0");
+        List<AlunoVoto> alunosJaVotados= new ArrayList<>();
+
+        //alunoLogado= new AlunoVoto("0");
 
         if (savedInstanceState == null) {
             Intent intentGeter = getIntent();
@@ -41,15 +46,16 @@ public class MestrePerfilActivity extends AppCompatActivity {
                 alunoLogado= new AlunoVoto("0");
             } else {
                 alunoLogado= (AlunoVoto) intentGeter.getSerializableExtra("VotoJaFeito");
+                alunosJaVotados.add(alunoLogado);
             }
         } else {
             alunoLogado= (AlunoVoto) savedInstanceState.getSerializable("VotoJaFeito");
+            alunosJaVotados.add(alunoLogado);
         }
 
-        List<AlunoVoto> alunosJaVotados= new ArrayList<>();
-        AlunoVoto aluno1=new AlunoVoto("1",3,2,4,5,3);
-        AlunoVoto aluno2=new AlunoVoto("2",3,2,4,5,3);
-        AlunoVoto aluno3=new AlunoVoto("3",3,3,1,4,4);
+        AlunoVoto aluno1=new AlunoVoto("1",3,3,3,3,3);
+        AlunoVoto aluno2=new AlunoVoto("2",3,3,3,3,3);
+        AlunoVoto aluno3=new AlunoVoto("3",3,3,3,3,3);
         alunosJaVotados.add(aluno1);
         alunosJaVotados.add(aluno2);
         alunosJaVotados.add(aluno3);
@@ -67,17 +73,21 @@ public class MestrePerfilActivity extends AppCompatActivity {
             conhecimentosExtra+=aluno.getConhecimentosExtra();
             assiduidade=aluno.getAssiduidade();
         }
+
+        int mediaFinal = ((matrerial+networking+ajuda+conhecimentosExtra+assiduidade)/mestreTeste.getAlunosQueVotaram().size())/numeroDeQuestoes;
     }
 
     public void votar(View view) {
         intent = new Intent(this, VotoFormularioActivity.class);
+        intent.putExtra("nomeProf", mestreTeste.getNome());
         startActivity(intent);
     }
 
     public void mudarVoto(View view) {
         //Todo:Caso ja exista o voto proucurar ele no FB por id em Mestre e enviar para a proxima activity ou envia so o id do aluno logado (verção FINAL)
         intent = new Intent(this, VotoFormularioActivity.class);
-        intent.putExtra("VotoJaFeito", alunoLogado);
+        intent.putExtra("VotoJaFeito", (Serializable) alunoLogado);
+        intent.putExtra("nomeProf", mestreTeste.getNome());
         startActivity(intent);
     }
 }

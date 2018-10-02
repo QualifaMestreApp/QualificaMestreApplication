@@ -6,14 +6,17 @@ import android.os.Bundle;
 
 public class VotoFormularioActivity extends AppCompatActivity {
 
-    Intent intent = getIntent();
+    private Intent intent = getIntent();
 
-    AlunoVoto alunoLogado=new AlunoVoto();
+    private String nomeProf="Error";
+    private AlunoVoto alunoLogado=new AlunoVoto();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_voto_formulario);
+
+        nomeProf= (String) savedInstanceState.getSerializable("nomeProf");
 
         if (savedInstanceState == null) {
             Intent intentGeter = getIntent();
