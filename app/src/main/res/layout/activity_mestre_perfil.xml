@@ -1,9 +1,239 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MestrePerfilActivity">
+    tools:context=".MestrePerfilActivity"
+    android:orientation="vertical"
+    android:layout_margin="14dp"
+    android:gravity="center">
 
-</android.support.constraint.ConstraintLayout>
+    <TextView
+        android:text="Votos: "
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toLeftOf="@+id/numeroDeVotos"
+        />
+
+    <TextView
+        android:id="@+id/numeroDeVotos"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/nomeProf"
+        android:text="xxxx"
+        />
+
+    <TextView
+        android:id="@+id/nomeProf"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Nome do professor(a)"
+        android:textSize="28dp"
+        android:layout_below="@+id/numeroDeVotos"
+        android:layout_marginBottom="7dp"/>
+
+
+    <LinearLayout
+        android:id="@+id/notaHolder"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/nomeProf"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:layout_marginBottom="21dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nota Final : "
+            android:textSize="21dp"/>
+        <TextView
+            android:id="@+id/profNota"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="X"
+            android:textSize="21dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=" / 5"
+            android:textSize="21dp"/>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/instituicoesHead"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/notaHolder"
+        android:text="Instituições: "/>
+
+    <TextView
+        android:id="@+id/instituicoes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/instituicoesHead"
+        android:layout_alignBaseline="@id/instituicoesHead"
+        android:text="Instituição1\ninsti2\ninsti3"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="21dp"/>
+
+    <TextView
+        android:id="@+id/disciplinasHead"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/instituicoes"
+        android:layout_alignBaseline="@id/instituicoesHead"
+        android:text="Instituições: "/>
+
+    <TextView
+        android:id="@+id/disciplinas"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/disciplinasHead"
+        android:layout_alignBaseline="@id/disciplinasHead"
+        android:text="disciplina1\ndisciplina2\ndisciplina3"/>
+
+
+    <TextView
+        android:id="@+id/mediaDeNotas"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/instituicoes"
+        android:text="Media De Notas: "
+        android:textSize="21dp"
+        android:layout_marginBottom="7dp"/>
+
+    <TextView
+        android:id="@+id/matrerialHead"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/mediaDeNotas"
+        android:text="Matrerial: "
+        android:layout_marginBottom="7dp"/>
+
+    <TextView
+        android:id="@+id/matrerial"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/matrerialHead"
+        android:layout_alignBaseline="@id/matrerialHead"
+        android:text="X"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=" / 5"
+        android:layout_toRightOf="@id/matrerial"
+        android:layout_alignBaseline="@id/matrerialHead"/>
+
+    <TextView
+        android:id="@+id/networkingHead"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/matrerialHead"
+        android:text="Networking: "
+        android:layout_marginBottom="7dp"/>
+
+    <TextView
+        android:id="@+id/networking"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/networkingHead"
+        android:layout_alignBaseline="@id/networkingHead"
+        android:text="X"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=" / 5"
+        android:layout_toRightOf="@id/networking"
+        android:layout_alignBaseline="@id/networkingHead"/>
+
+    <TextView
+        android:id="@+id/ajudaHead"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/networkingHead"
+        android:text="Assistência: "
+        android:layout_marginBottom="7dp"/>
+
+    <TextView
+        android:id="@+id/ajuda"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/ajudaHead"
+        android:layout_alignBaseline="@id/ajudaHead"
+        android:text="X"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=" / 5"
+        android:layout_toRightOf="@id/ajuda"
+        android:layout_alignBaseline="@id/ajudaHead"/>
+
+    <TextView
+        android:id="@+id/conhecimentoHead"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ajudaHead"
+        android:text="Conhecimento: "
+        android:layout_marginBottom="7dp"/>
+
+    <TextView
+        android:id="@+id/conhecimento"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/conhecimentoHead"
+        android:layout_alignBaseline="@id/conhecimentoHead"
+        android:text="X"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=" / 5"
+        android:layout_toRightOf="@id/conhecimento"
+        android:layout_alignBaseline="@id/conhecimentoHead"/>
+
+    <TextView
+        android:id="@+id/assiduidadeHead"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/conhecimentoHead"
+        android:text="Assiduidade: "
+        android:layout_marginBottom="7dp"/>
+
+    <TextView
+        android:id="@+id/assiduidade"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/assiduidadeHead"
+        android:layout_alignBaseline="@id/assiduidadeHead"
+        android:text="X"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=" / 5"
+        android:layout_toRightOf="@id/assiduidade"
+        android:layout_alignBaseline="@id/assiduidadeHead"/>
+
+
+
+    <android.support.v7.widget.AppCompatButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Votar"
+        android:layout_below="@id/assiduidadeHead"
+        android:visibility="gone"
+        android:onClick="votar"/>
+    <android.support.v7.widget.AppCompatButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Mudar Voto"
+        android:layout_below="@id/assiduidadeHead"
+        android:visibility="gone"
+        android:onClick="mudarVoto"/>
+</RelativeLayout>

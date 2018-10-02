@@ -6,27 +6,37 @@ public class Mestre {
 
     public Mestre(){}
 
-    public Mestre(String id, String nome, String instituição, int matrerial, int aura, int ajuda,int conhecimentosExtra, int assiduidade){
+    public Mestre(String id, String nome, String instituição, int matrerial, int networking, int ajuda,int conhecimentosExtra, int assiduidade, String disciplina){
         this.id = id;
         this.nome = nome;
         this.instituição = instituição;
         this.matrerial = matrerial;
-        this.aura = aura;
+        this.networking = networking;
         this.ajuda = ajuda;
         this.conhecimentosExtra = conhecimentosExtra;
         this.assiduidade = assiduidade;
+        this.disciplina = disciplina;
     }
 
     String id;
     String nome;
     String instituição;
+    String disciplina;
     List<String> alunosQueVotados;
     //de 0 a 5
     int matrerial;
-    int aura;
+    int networking;
     int ajuda;
     int conhecimentosExtra;
     int assiduidade;
+
+    public String getDisciplina() {
+        return disciplina;
+    }
+
+    public void setDisciplina(String disciplina) {
+        this.disciplina = disciplina;
+    }
 
     public String getId() {
         return id;
@@ -68,12 +78,12 @@ public class Mestre {
         this.matrerial = matrerial;
     }
 
-    public int getAura() {
-        return aura;
+    public int getNetworking() {
+        return networking;
     }
 
-    public void setAura(int aura) {
-        this.aura = aura;
+    public void setNetworking(int networking) {
+        this.networking = networking;
     }
 
     public int getAjuda() {
