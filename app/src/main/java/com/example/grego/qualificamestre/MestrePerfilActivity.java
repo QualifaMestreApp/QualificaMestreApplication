@@ -47,6 +47,15 @@ public class MestrePerfilActivity extends AppCompatActivity {
         setContentView(R.layout.activity_mestre_perfil);
 
         nomeTextView= (TextView) findViewById(R.id.nomeProf);
+        votosTextView= (TextView) findViewById(R.id.numeroDeVotos);
+        instituicoesTextView= (TextView) findViewById(R.id.instituicoes);
+        disciplinasTextView= (TextView) findViewById(R.id.disciplinas);
+        notaFinalTextView= (TextView) findViewById(R.id.profNota);
+        matrerialTextView= (TextView) findViewById(R.id.matrerial);
+        networkingTextView= (TextView) findViewById(R.id.networking);
+        ajudaTextView= (TextView) findViewById(R.id.ajuda);
+        conhecimentosExtraTextView= (TextView) findViewById(R.id.conhecimento);
+        assiduidadeTextView= (TextView) findViewById(R.id.assiduidade);
 
         //Todo: Fazer funcção que pege o Professor do FB (verção FINAL)
         //Todo: Pegar id do aluno Logado(verção FINAL)
@@ -90,7 +99,19 @@ public class MestrePerfilActivity extends AppCompatActivity {
             assiduidade=aluno.getAssiduidade();
         }
 
-        int mediaFinal = ((matrerial+networking+ajuda+conhecimentosExtra+assiduidade)/mestreTeste.getAlunosQueVotaram().size())/numeroDeQuestoes;
+        int numeroDeAlunosqueVotaram=mestreTeste.getAlunosQueVotaram().size();
+        int mediaFinal = ((matrerial+networking+ajuda+conhecimentosExtra+assiduidade)/numeroDeAlunosqueVotaram)/numeroDeQuestoes;
+
+        nomeTextView.setText(mestreTeste.nome);
+        votosTextView.setText(mestreTeste.getAlunosQueVotaram().size());
+        instituicoesTextView.setText(mestreTeste.getInstituição());
+        disciplinasTextView.setText(mestreTeste.getDisciplina());
+        notaFinalTextView.setText(mediaFinal);
+        matrerialTextView.setText(matrerial/numeroDeAlunosqueVotaram);
+        networkingTextView.setText(networking/numeroDeAlunosqueVotaram);
+        ajudaTextView.setText(ajuda/numeroDeAlunosqueVotaram);
+        conhecimentosExtraTextView.setText(conhecimentosExtra/numeroDeAlunosqueVotaram);
+        assiduidadeTextView.setText(assiduidade/numeroDeAlunosqueVotaram);
     }
 
     public void votar(View view) {
