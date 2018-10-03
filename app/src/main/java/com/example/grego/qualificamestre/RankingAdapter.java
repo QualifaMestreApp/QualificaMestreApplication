@@ -20,7 +20,7 @@ import java.util.List;
 
 public class RankingAdapter extends RecyclerView.Adapter<RankingAdapter.MasterViewHolder>{
 
-    private MasterRecyclerViewCardListener mMasterRecyclerViewCardListener;
+
     private List<DataSnapshot> snapshotList;
     private List<Master> masterList = new ArrayList<>();
     private FirebaseDatabase firebaseInstance;
@@ -28,10 +28,12 @@ public class RankingAdapter extends RecyclerView.Adapter<RankingAdapter.MasterVi
     private String MASTER_PATH = "Professores";
     private int NORMAL_CARD = 1;
     private int EMPTY_CARD = 2;
+    private OnFragmentCardClickListener fragmentCardClickListener;
 
 
-    public RankingAdapter() {
-        this.snapshotList = new ArrayList<>();
+    public RankingAdapter(List<DataSnapshot> snapshotList, OnFragmentCardClickListener fragmentCardClickListener) {
+        this.snapshotList = snapshotList;
+        this.fragmentCardClickListener = fragmentCardClickListener;
 
         firebaseInstance = FirebaseDatabase.getInstance();
         firebaseReference = firebaseInstance.getReference(MASTER_PATH);
@@ -115,7 +117,7 @@ public class RankingAdapter extends RecyclerView.Adapter<RankingAdapter.MasterVi
         return snapshotList.size();
     }
 
-    public class MasterViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+    public class MasterViewHolder extends RecyclerView.ViewHolder{
 
 
         TextView name, institution, voters;
@@ -128,20 +130,23 @@ public class RankingAdapter extends RecyclerView.Adapter<RankingAdapter.MasterVi
             institution = itemView.findViewById(R.id.master_card_institution_field_text_view);
             voters = itemView.findViewById(R.id.master_card_voters_field_text_view);
 
-            itemView.setOnClickListener(this);
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (fragmentCardClickListener != null){
+                        Master master = masterList.get(getAdapterPosition());
+                        fragmentCardClickListener.onCardClick(master);
+                    }
+                }
+            });
 
 
         }
 
-        @Override
-        public void onClick(View v) {
 
-        }
     }
 
-    public void setMasterRecyclerViewCardListener(MasterRecyclerViewCardListener m){
-        mMasterRecyclerViewCardListener = m;
-    }
+
 
     public void addUser(DataSnapshot dataSnapshot){
 

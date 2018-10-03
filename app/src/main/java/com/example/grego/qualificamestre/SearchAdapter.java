@@ -1,5 +1,6 @@
 package com.example.grego.qualificamestre;
 
+import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -7,19 +8,23 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.google.firebase.database.DataSnapshot;
+
 import java.util.List;
 
 public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.SearchViewHolder>{
 
-    private MasterRecyclerViewCardListener mMasterRecyclerViewCardListener;
+
     private List<Master> masterList;
+    private OnFragmentCardClickListener fragmentCardClickListener;
 
 
     private int SEARCH_CARD = 1;
     private int EMPTY_CARD = 2;
 
-    public SearchAdapter(List<Master> masterList) {
+    public SearchAdapter(List<Master> masterList, OnFragmentCardClickListener fragmentCardClickListener) {
         this.masterList = masterList;
+        this.fragmentCardClickListener = fragmentCardClickListener;
 
     }
 
@@ -72,7 +77,7 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.SearchView
         return masterList.size();
     }
 
-    public class SearchViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+    public class SearchViewHolder extends RecyclerView.ViewHolder {
 
 
         TextView searchName, searchInstitution, searchGrade;
@@ -85,20 +90,25 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.SearchView
             searchInstitution = itemView.findViewById(R.id.search_master_card_institution_field_text_view);
             searchGrade = itemView.findViewById(R.id.search_master_card_grade_field_text_view);
 
-            itemView.setOnClickListener(this);
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (fragmentCardClickListener != null){
+                        Master master = masterList.get(getAdapterPosition());
+                        fragmentCardClickListener.onCardClick(master);
+                    }
+                }
+            });
 
 
         }
 
-        @Override
-        public void onClick(View v) {
 
-        }
     }
 
-    public void setMasterRecyclerViewCardListener(MasterRecyclerViewCardListener m){
-        mMasterRecyclerViewCardListener = m;
-    }
+//    public void setMasterRecyclerViewCardListener(MasterRecyclerViewCardListener m){
+//        mMasterRecyclerViewCardListener = m;
+//    }
 
 
 

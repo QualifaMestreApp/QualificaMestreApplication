@@ -1,16 +1,19 @@
 package com.example.grego.qualificamestre;
 
+import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
@@ -36,6 +39,7 @@ public class SearchFragment extends Fragment implements View.OnClickListener{
     private List<DataSnapshot> snapshotList;
     private List<Master> masterList;
     private EditText searchText;
+    private OnFragmentCardClickListener fragmentCardClickListener;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -62,6 +66,18 @@ public class SearchFragment extends Fragment implements View.OnClickListener{
         return rootView;
     }
 
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+
+        if (context instanceof OnFragmentCardClickListener){
+            fragmentCardClickListener = (OnFragmentCardClickListener) context;
+        }
+        else {
+            Toast.makeText(context, "Deu Ruim", Toast.LENGTH_SHORT).show();
+            throw new ClassCastException();
+        }
+    }
 
     @Override
     public void onClick(View v) {
@@ -87,7 +103,7 @@ public class SearchFragment extends Fragment implements View.OnClickListener{
         }
 
         if (masterList != null){
-        mSearchAdapter = new SearchAdapter(masterList);
+        mSearchAdapter = new SearchAdapter(masterList, fragmentCardClickListener);
         mMasterSearchRecyclerView.setAdapter(mSearchAdapter);
         }
     }
