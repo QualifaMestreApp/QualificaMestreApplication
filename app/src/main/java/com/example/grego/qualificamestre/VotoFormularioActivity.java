@@ -42,7 +42,7 @@ public class VotoFormularioActivity extends AppCompatActivity {
     private int temperamento=0;
     private int assiduidade=0;
 
-    private String nomeProf = "Error De Nome";
+    private String nomeProf = "Voto de Pupilo";
 
     String alunoId;
     String profId;
@@ -106,43 +106,46 @@ public class VotoFormularioActivity extends AppCompatActivity {
         alunoId = FirebaseAuth.getInstance().getCurrentUser().getUid();
         profId = getIntent().getExtras().getString("MasterId");
 
-        Query searchQuery = (Query) FirebaseDatabase.getInstance()
-                .getReference("Professores")
-                .orderByChild("id")
-                .equalTo(profId)
-                .limitToFirst(1)
-                .addChildEventListener(new ChildEventListener() {
-
-                    @Override
-                    public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                        Master mestre = dataSnapshot.getValue(Master.class);
-                        nomeProf= "Votando Em: "+mestre.getNome();
-                    }
-
-
-                    @Override
-                    public void onChildChanged(DataSnapshot dataSnapshot, String s) {
-
-                    }
-
-                    @Override
-                    public void onChildRemoved(DataSnapshot dataSnapshot) {
-
-                    }
-
-                    @Override
-                    public void onChildMoved(DataSnapshot dataSnapshot, String s) {
-
-                    }
-
-                    @Override
-                    public void onCancelled(DatabaseError databaseError) {
-
-                    }
-                });
+//        Query searchQuery = (Query) FirebaseDatabase.getInstance()
+//                .getReference("Professores")
+//                .orderByChild("id")
+//                .equalTo(profId)
+//                .limitToFirst(1)
+//                .addChildEventListener(new ChildEventListener() {
+//
+//                    @Override
+//                    public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+//                        Master mestre = dataSnapshot.getValue(Master.class);
+//                        nomeProf= "Votando Em: "+mestre.getNome();
+//                    }
+//
+//
+//                    @Override
+//                    public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+//
+//                    }
+//
+//                    @Override
+//                    public void onChildRemoved(DataSnapshot dataSnapshot) {
+//
+//                    }
+//
+//                    @Override
+//                    public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+//
+//                    }
+//
+//                    @Override
+//                    public void onCancelled(DatabaseError databaseError) {
+//
+//                    }
+//                });
     }
 
     public void terminarVoto(View view) {
+//        if (radioButton0==null||radioButton1==null||radioButton2==null||radioButton3==null||radioButton4==null){
+//            Toast.makeText(this, "Por favor Preencha todos os campos", Toast.LENGTH_LONG).show();
+//        }
         if (radioButton0.isChecked()==false||radioButton1.isChecked()==false||radioButton2.isChecked()==false||radioButton3.isChecked()==false||radioButton4.isChecked()==false){
             Toast.makeText(this, "Por favor Preencha todos os campos", Toast.LENGTH_LONG).show();
         }else{
