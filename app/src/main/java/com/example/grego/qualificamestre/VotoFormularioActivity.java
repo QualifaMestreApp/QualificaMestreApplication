@@ -47,6 +47,8 @@ public class VotoFormularioActivity extends AppCompatActivity {
     String alunoId;
     String profId;
 
+    AlunoVoto votoConcluido;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -220,11 +222,11 @@ public class VotoFormularioActivity extends AppCompatActivity {
                     break;
             }
 
-            AlunoVoto votoConcluido = new AlunoVoto(alunoId,didatica,conteudo,flexibilidade,temperamento,assiduidade);
+            votoConcluido = new AlunoVoto(alunoId,didatica,conteudo,flexibilidade,temperamento,assiduidade);
 
             //Todo:Adicionar votoConcluido na lista de alunos votos em professosr
             DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference("Professores");
-            mDatabase.child(profId).child("Voters").setValue(votoConcluido);
+            mDatabase.child(profId).child("voters").setValue(votoConcluido);
         }
     }
 }
