@@ -179,7 +179,8 @@
             android:background="@drawable/rec_gradient"
             android:text="Votar!"
             android:textColor="@color/secondaryColor"
-            android:visibility="visible" />
+            android:visibility="visible"
+            android:onClick="votarButton"/>
 
     </LinearLayout>
 

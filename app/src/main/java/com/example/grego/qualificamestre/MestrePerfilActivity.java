@@ -163,4 +163,16 @@ public class MestrePerfilActivity extends AppCompatActivity {
         }
         return false;
     }
+
+    public void votarButton(View view) {
+        Intent intent = getIntent();
+
+        String masterId = intent.getStringExtra("MasterId");
+        //String currentFirebaseUser = FirebaseAuth.getInstance().getCurrentUser().getUid() ;
+        Intent intentParaVoto = new Intent(this, VotoFormularioActivity.class);
+
+        intentParaVoto.putExtra("MasterId", masterId);
+        intentParaVoto.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intentParaVoto);
+    }
 }

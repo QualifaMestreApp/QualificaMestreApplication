@@ -8,6 +8,8 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+
 public class VotoFormularioActivity extends AppCompatActivity {
 
     //private Intent intent = getIntent();
@@ -98,8 +100,8 @@ public class VotoFormularioActivity extends AppCompatActivity {
         });
 
         Intent intentGeter = getIntent();
-        alunoId = intentGeter.getStringExtra("iddoAluno");
-        profId = intentGeter.getStringExtra("iddoProfesor");
+        alunoId = FirebaseAuth.getInstance().getCurrentUser().getUid() ;
+        profId = getIntent().getExtras().getString("MasterId");;
 
     }
 
