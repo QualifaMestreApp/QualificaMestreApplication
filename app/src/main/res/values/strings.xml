@@ -6,8 +6,10 @@
     <string name="title_activity_main_master">MainMasterActivity</string>
     <string name="tab_text_1">Buscar</string>
     <string name="tab_text_2">Ranking</string>
-
+    <string name="tab_text_3">Aluno</string>
+    <string name="tab_text_4">Professor</string>
     <string name="action_settings">Settings</string>
     <string name="section_format">Hello World from section: %1$d</string>
     <string name="title_activity_master_main">MasterMainActivity</string>
+    <string name="title_activity_cadastro">CadastroActivity</string>
 </resources>

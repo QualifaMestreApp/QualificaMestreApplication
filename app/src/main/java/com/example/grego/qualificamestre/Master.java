@@ -1,8 +1,13 @@
 package com.example.grego.qualificamestre;
 
+import android.os.Parcelable;
+
+import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
-public class Master {
+
+public class Master implements Serializable{
 
     public Master() {
     }
@@ -11,7 +16,7 @@ public class Master {
         this.Nome = name;
         this.Institution = institution;
         this.Grade = grade;
-        this.Voters = voters;
+        this.Voters = new ArrayList<>();
     }
 
     private String Nome;

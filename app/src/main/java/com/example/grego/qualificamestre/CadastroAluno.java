@@ -1,6 +1,7 @@
 package com.example.grego.qualificamestre;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -67,6 +68,8 @@ public class CadastroAluno extends Fragment implements View.OnClickListener{
                                                 aluno.instituição = iinstituicao.getText().toString();
                                                 myRef.child(user.getUid()).setValue(aluno);
                                                 Toast.makeText(getActivity(), "Conta criada! Bem vindo!.", Toast.LENGTH_SHORT).show();
+                                                Intent intent = new Intent(getActivity(), MasterMainActivity.class);
+                                                startActivity(intent);
                                             } else {
                                                 Toast.makeText(getActivity(), "Erro!." + task.getException().getMessage(),Toast.LENGTH_SHORT).show();
                                             }

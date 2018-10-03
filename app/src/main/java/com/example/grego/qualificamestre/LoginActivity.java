@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -21,6 +22,7 @@ public class LoginActivity extends AppCompatActivity {
     private static final String TAG = "Login";
     EditText inputEmail, inputPassword;
     Button cadastrar, login;
+    TextView forgotPassword;
     private FirebaseAuth mAuth;
 
 
@@ -34,6 +36,7 @@ public class LoginActivity extends AppCompatActivity {
         cadastrar = findViewById(R.id.Btn_cadastra_login);
         login = findViewById(R.id.Btn_logar_login);
 
+        forgotPassword = findViewById(R.id.Tv_esqueceu_login);
         inputEmail = findViewById(R.id.Input_email_login);
         inputPassword = findViewById(R.id.Input_password_login);
 
@@ -45,6 +48,13 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
+        forgotPassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(LoginActivity.this, ForgotPassword.class);
+                startActivity(intent);
+            }
+        });
 
         login.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -58,7 +68,8 @@ public class LoginActivity extends AppCompatActivity {
                                 public void onComplete(@NonNull Task<AuthResult> task) {
                                     if (task.isSuccessful()) {
                                         FirebaseUser user = mAuth.getCurrentUser();
-                                        Toast.makeText(LoginActivity.this, "Bem vindo!", Toast.LENGTH_LONG).show();
+                                        Intent intent = new Intent(LoginActivity.this, MasterMainActivity.class);
+                                        startActivity(intent);
                                     } else {
                                         // If sign in fails, display a message to the user.
                                         Toast.makeText(LoginActivity.this, "Authentication failed : " + task.getException().getMessage(),
@@ -75,5 +86,12 @@ public class LoginActivity extends AppCompatActivity {
         super.onStart();
         // Check if user is signed in (non-null) and update UI accordingly.
         FirebaseUser currentUser = mAuth.getCurrentUser();
+
+        if (currentUser != null) {
+            Intent intent = new Intent(LoginActivity.this, MasterMainActivity.class);
+            startActivity(intent);
+        } else {
+            // No user is signed in
+        }
     }
 }

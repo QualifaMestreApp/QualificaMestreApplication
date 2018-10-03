@@ -1,5 +1,6 @@
 package com.example.grego.qualificamestre;
 
+import android.content.Intent;
 import android.support.design.widget.TabLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -18,8 +19,13 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import android.widget.TextView;
+import android.widget.Toast;
 
-public class MasterMainActivity extends AppCompatActivity {
+import com.google.firebase.database.DataSnapshot;
+
+import java.io.Serializable;
+
+public class MasterMainActivity extends AppCompatActivity implements OnFragmentCardClickListener{
 
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide
@@ -90,9 +96,22 @@ public class MasterMainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    @Override
+    public void onCardClick(Master master) {
+        Intent intent;
+
+        intent = new Intent(this, MainActivity.class);
+
+        intent.putExtra("Master_OBJ", master);
+
+        Toast.makeText(this, "GG ZOU GALERETE :" + master.toString() , Toast.LENGTH_SHORT).show();
+
+        startActivity(intent);
+
+    }
 
 
-        public class SectionsPagerAdapter extends FragmentPagerAdapter {
+    public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
         public SectionsPagerAdapter(FragmentManager fm) {
             super(fm);
@@ -119,11 +138,5 @@ public class MasterMainActivity extends AppCompatActivity {
 
             return 2;
         }
-
-
-
-
-
-
     }
 }

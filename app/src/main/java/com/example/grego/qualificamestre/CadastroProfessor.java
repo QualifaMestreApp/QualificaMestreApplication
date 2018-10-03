@@ -1,5 +1,6 @@
 package com.example.grego.qualificamestre;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -18,6 +19,8 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.ArrayList;
 
 public class CadastroProfessor extends Fragment implements View.OnClickListener {
 
@@ -49,7 +52,7 @@ public class CadastroProfessor extends Fragment implements View.OnClickListener 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.Btn_cadastrar_cadaluno:
+            case R.id.Btn_cadastrar_cadprof:
                 if (!inome.getText().toString().isEmpty() && !iemail.getText().toString().isEmpty() && !iinstituicao.getText().toString().isEmpty() && !ipassword.getText().toString().isEmpty()) {
                     if (iemail.getText().toString().matches("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
                             + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$")) {
@@ -60,11 +63,13 @@ public class CadastroProfessor extends Fragment implements View.OnClickListener 
                                         public void onComplete(@NonNull Task<AuthResult> task) {
                                             if (task.isSuccessful()) {
                                                 FirebaseUser user = mAuth.getCurrentUser();
-                                                Aluno aluno = new Aluno();
-                                                aluno.nome = inome.getText().toString();
-                                                aluno.instituição = iinstituicao.getText().toString();
-                                                myRef.child(user.getUid()).setValue(aluno);
+                                                Master master = new Master();
+                                                master.setNome(inome.getText().toString());
+                                                master.setInstitution(iinstituicao.getText().toString());
+                                                master.setVoters(new ArrayList<>());
+                                                myRef.child(user.getUid()).setValue(master);
                                                 Toast.makeText(getActivity(), "Conta criada! Bem vindo!.", Toast.LENGTH_SHORT).show();
+                                                Intent intent = new Intent(getActivity(), MasterMainActivity.class);
                                             } else {
                                                 Toast.makeText(getActivity(), "Erro!." + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                                             }
@@ -82,6 +87,5 @@ public class CadastroProfessor extends Fragment implements View.OnClickListener 
                 }
                 break;
         }
-
     }
 }
