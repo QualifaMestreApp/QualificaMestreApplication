@@ -1,7 +1,5 @@
 package com.example.grego.qualificamestre;
 
-import android.os.Parcelable;
-
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -16,16 +14,16 @@ public class Master implements Serializable{
         this.id = id;
         this.nome = name;
         this.institution = institution;
-        this.Voters = new ArrayList<>();
+        this.voters = new ArrayList<>();
     }
 
     private String id;
     private String nome;
     private String institution;
-    private List<AlunoVoto> Voters;
+    private List<AlunoVoto> voters;
 
     public int getVotersCount() {
-        return Voters.size();
+        return voters.size();
     }
 
     public String getId() {
@@ -53,10 +51,10 @@ public class Master implements Serializable{
     }
 
     public List<AlunoVoto> getVoters() {
-        return Voters;
+        return voters;
     }
 
     public void setVoters(List<AlunoVoto> voters) {
-        Voters = voters;
+        this.voters = voters;
     }
 }

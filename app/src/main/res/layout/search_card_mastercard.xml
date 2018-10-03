@@ -43,7 +43,7 @@
             android:layout_weight="1">
 
             <TextView
-                android:id="@+id/search_master_card_grade_field_text_view"
+                android:id="@+id/search_master_card_voters_field_text_view"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"

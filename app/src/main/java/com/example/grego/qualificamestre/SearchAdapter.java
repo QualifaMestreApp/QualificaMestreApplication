@@ -19,6 +19,7 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.SearchView
     private OnFragmentCardClickListener fragmentCardClickListener;
 
 
+
     private int SEARCH_CARD = 1;
     private int EMPTY_CARD = 2;
 
@@ -65,6 +66,9 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.SearchView
 
             mvh.searchName.setText(master.getNome());
             mvh.searchInstitution.setText(master.getInstitution());
+            mvh.searchVoters.setText(master.getVoters().toString());
+
+
 //            if(master.getGrade() != null){
 //                mvh.searchGrade.setText(master.getGrade().toString());
 //            }else {
@@ -84,7 +88,7 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.SearchView
     public class SearchViewHolder extends RecyclerView.ViewHolder {
 
 
-        TextView searchName, searchInstitution, searchGrade;
+        TextView searchName, searchInstitution, searchVoters;
 
 
         public SearchViewHolder(@NonNull View itemView) {
@@ -92,7 +96,7 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.SearchView
 
             searchName = itemView.findViewById(R.id.search_master_card_name_field_text_view);
             searchInstitution = itemView.findViewById(R.id.search_master_card_institution_field_text_view);
-            searchGrade = itemView.findViewById(R.id.search_master_card_grade_field_text_view);
+            searchVoters = itemView.findViewById(R.id.search_master_card_voters_field_text_view);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -109,10 +113,6 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.SearchView
 
 
     }
-
-//    public void setMasterRecyclerViewCardListener(MasterRecyclerViewCardListener m){
-//        mMasterRecyclerViewCardListener = m;
-//    }
 
 
 
