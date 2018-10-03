@@ -12,8 +12,10 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 
 public class VotoFormularioActivity extends AppCompatActivity {
 
@@ -218,7 +220,8 @@ public class VotoFormularioActivity extends AppCompatActivity {
             AlunoVoto votoConcluido = new AlunoVoto(alunoId,matrerial,networking,ajuda,conhecimentosExtra,assiduidade);
 
             //Todo:Adicionar votoConcluido na lista de alunos votos em professosr
-
+            DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference("Professores");
+            mDatabase.child(profId).child("Voters").setValue(votoConcluido);
         }
     }
 }
