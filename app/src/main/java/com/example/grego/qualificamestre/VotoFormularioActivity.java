@@ -148,7 +148,9 @@ public class VotoFormularioActivity extends AppCompatActivity {
 //        if (radioButton0==null||radioButton1==null||radioButton2==null||radioButton3==null||radioButton4==null){
 //            Toast.makeText(this, "Por favor Preencha todos os campos", Toast.LENGTH_LONG).show();
 //        }
-        if (radioButton0.isChecked()==false||radioButton1.isChecked()==false||radioButton2.isChecked()==false||radioButton3.isChecked()==false||radioButton4.isChecked()==false){
+        if ((radioButton0.isChecked()==false||radioButton1.isChecked()==false||radioButton2.isChecked()==false||radioButton3.isChecked()==false||radioButton4.isChecked()==false)
+                ||
+                (radioButton0==null||radioButton1==null||radioButton2==null||radioButton3==null||radioButton4==null)){
             Toast.makeText(this, "Por favor Preencha todos os campos", Toast.LENGTH_LONG).show();
         }else{
             switch (radioButton0.getId()) {
