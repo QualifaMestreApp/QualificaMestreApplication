@@ -36,10 +36,10 @@ public class VotoFormularioActivity extends AppCompatActivity {
     RadioGroup radioGroup4;
     RadioButton radioButton4;
 
-    private int matrerial=0;
-    private int networking=0;
-    private int ajuda=0;
-    private int conhecimentosExtra=0;
+    private int didatica=0;
+    private int conteudo=0;
+    private int flexibilidade=0;
+    private int temperamento=0;
     private int assiduidade=0;
 
     private String nomeProf = "Error De Nome";
@@ -147,59 +147,59 @@ public class VotoFormularioActivity extends AppCompatActivity {
             Toast.makeText(this, "Por favor Preencha todos os campos", Toast.LENGTH_LONG).show();
         }else{
             switch (radioButton0.getId()) {
-                    case R.id.radio_inutil0:  matrerial=1;
+                    case R.id.radio_inutil0:  didatica=1;
                         break;
-                    case R.id.radio_antiguado0:  matrerial=2;
+                    case R.id.radio_antiguado0:  didatica=2;
                         break;
-                    case R.id.radio_razoavel0:  matrerial=3;
+                    case R.id.radio_razoavel0:  didatica=3;
                         break;
-                    case R.id.radio_bom0:  matrerial=4;
+                    case R.id.radio_bom0:  didatica=4;
                         break;
-                    case R.id.radio_mudou_a_minha_vida0: matrerial=5;
+                    case R.id.radio_mudou_a_minha_vida0: didatica=5;
                         break;
-                    default: matrerial=0;
+                    default: didatica=0;
                         break;
             }
             switch (radioButton1.getId()) {
-                case R.id.radio_inutil1:  networking=1;
+                case R.id.radio_inutil1:  conteudo=1;
                     break;
-                case R.id.radio_antiguado1:  networking=2;
+                case R.id.radio_antiguado1:  conteudo=2;
                     break;
-                case R.id.radio_razoavel1:  networking=3;
+                case R.id.radio_razoavel1:  conteudo=3;
                     break;
-                case R.id.radio_bom1:  networking=4;
+                case R.id.radio_bom1:  conteudo=4;
                     break;
-                case R.id.radio_mudou_a_minha_vida1: networking=5;
+                case R.id.radio_mudou_a_minha_vida1: conteudo=5;
                     break;
-                default: networking=0;
+                default: conteudo=0;
                     break;
             }
             switch (radioButton2.getId()) {
-                case R.id.radio_inutil2:  ajuda=1;
+                case R.id.radio_inutil2:  flexibilidade=1;
                     break;
-                case R.id.radio_antiguado2:  ajuda=2;
+                case R.id.radio_antiguado2:  flexibilidade=2;
                     break;
-                case R.id.radio_razoavel2:  ajuda=3;
+                case R.id.radio_razoavel2:  flexibilidade=3;
                     break;
-                case R.id.radio_bom2:  ajuda=4;
+                case R.id.radio_bom2:  flexibilidade=4;
                     break;
-                case R.id.radio_mudou_a_minha_vida2: ajuda=5;
+                case R.id.radio_mudou_a_minha_vida2: flexibilidade=5;
                     break;
-                default: ajuda=0;
+                default: flexibilidade=0;
                     break;
             }
             switch (radioButton3.getId()) {
-                case R.id.radio_inutil0:  conhecimentosExtra=1;
+                case R.id.radio_inutil0:  temperamento=1;
                     break;
-                case R.id.radio_antiguado3:  conhecimentosExtra=2;
+                case R.id.radio_antiguado3:  temperamento=2;
                     break;
-                case R.id.radio_razoavel3:  conhecimentosExtra=3;
+                case R.id.radio_razoavel3:  temperamento=3;
                     break;
-                case R.id.radio_bom3:  conhecimentosExtra=4;
+                case R.id.radio_bom3:  temperamento=4;
                     break;
-                case R.id.radio_mudou_a_minha_vida3: conhecimentosExtra=5;
+                case R.id.radio_mudou_a_minha_vida3: temperamento=5;
                     break;
-                default: conhecimentosExtra=0;
+                default: temperamento=0;
                     break;
             }
             switch (radioButton4.getId()) {
@@ -217,7 +217,7 @@ public class VotoFormularioActivity extends AppCompatActivity {
                     break;
             }
 
-            AlunoVoto votoConcluido = new AlunoVoto(alunoId,matrerial,networking,ajuda,conhecimentosExtra,assiduidade);
+            AlunoVoto votoConcluido = new AlunoVoto(alunoId,didatica,conteudo,flexibilidade,temperamento,assiduidade);
 
             //Todo:Adicionar votoConcluido na lista de alunos votos em professosr
             DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference("Professores");
