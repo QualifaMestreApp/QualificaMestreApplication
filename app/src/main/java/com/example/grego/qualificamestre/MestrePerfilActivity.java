@@ -27,7 +27,7 @@ public class MestrePerfilActivity extends AppCompatActivity {
     private int conhecimentosExtra=0;
     private int assiduidade=0;
 
-    private Intent intent;
+    //private Intent intent;
 
     private TextView nomeTextView;
     private TextView votosTextView;
@@ -126,16 +126,16 @@ public class MestrePerfilActivity extends AppCompatActivity {
     }
 
     public void votar(View view) {
-        intent = new Intent(this, VotoFormularioActivity.class);
+        Intent intent = new Intent(MestrePerfilActivity.this, VotoFormularioActivity.class);
         intent.putExtra("nomeProf", mestreTeste.getNome());
         startActivity(intent);
     }
 
-    public void mudarVoto(View view) {
-        //Todo:Caso ja exista o voto proucurar ele no FB por id em Mestre e enviar para a proxima activity ou envia so o id do aluno logado (verção FINAL)
-        intent = new Intent(this, VotoFormularioActivity.class);
-        intent.putExtra("VotoJaFeito", (Serializable) alunoLogado);
-        intent.putExtra("nomeProf", mestreTeste.getNome());
-        startActivity(intent);
-    }
+//    public void mudarVoto(View view) {
+//        //Todo:Caso ja exista o voto proucurar ele no FB por id em Mestre e enviar para a proxima activity ou envia so o id do aluno logado (verção FINAL)
+//        intent = new Intent(this, VotoFormularioActivity.class);
+//        intent.putExtra("VotoJaFeito", (Serializable) alunoLogado);
+//        intent.putExtra("nomeProf", mestreTeste.getNome());
+//        startActivity(intent);
+//    }
 }

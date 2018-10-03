@@ -1,35 +1,35 @@
 {
   "project_info": {
-    "project_number": "9463088373",
-    "firebase_url": "https://qualificamestretestapagar.firebaseio.com",
-    "project_id": "qualificamestretestapagar",
-    "storage_bucket": "qualificamestretestapagar.appspot.com"
+    "project_number": "564405067088",
+    "firebase_url": "https://qualificamestreapp-38099.firebaseio.com",
+    "project_id": "qualificamestreapp-38099",
+    "storage_bucket": "qualificamestreapp-38099.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:9463088373:android:ee2cfe71396f897a",
+        "mobilesdk_app_id": "1:564405067088:android:ee2cfe71396f897a",
         "android_client_info": {
           "package_name": "com.example.grego.qualificamestre"
         }
       },
       "oauth_client": [
         {
-          "client_id": "9463088373-o1pp8prhbgmm7av4d2f9sou809k8ik61.apps.googleusercontent.com",
+          "client_id": "564405067088-frsa81243pvuq4je7f439spvdk6a6u5q.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.example.grego.qualificamestre",
-            "certificate_hash": "acdf42a8a3d93b569fcbb8a164246c2a7957630e"
+            "certificate_hash": "f0afd9facc0a6cc38038394fa517d6eb99a965fe"
           }
         },
         {
-          "client_id": "9463088373-bcpmifbds92g48f9iej92vuq2b0svm1j.apps.googleusercontent.com",
+          "client_id": "564405067088-v02osn4f4ce26eth50g4ui8139913q7l.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyCVp50GkJj36jFJcWUGHw-RDgsPMlj7Jz8"
+          "current_key": "AIzaSyAehitJklNsUaZwP7VK2gJ1z7Ue1-ui_aQ"
         }
       ],
       "services": {
@@ -40,7 +40,7 @@
           "status": 2,
           "other_platform_oauth_client": [
             {
-              "client_id": "9463088373-bcpmifbds92g48f9iej92vuq2b0svm1j.apps.googleusercontent.com",
+              "client_id": "564405067088-v02osn4f4ce26eth50g4ui8139913q7l.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

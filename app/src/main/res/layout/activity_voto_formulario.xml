@@ -13,6 +13,9 @@
         android:orientation="vertical"
         android:gravity="center"
         android:layout_margin="7dp">
+
+
+
         <TextView
             android:id="@+id/nompeProf"
             android:layout_width="wrap_content"
@@ -20,20 +23,32 @@
             android:text="Nome Prof"
             android:textSize="21dp"
             android:layout_marginBottom="21dp"/>
-
-        <TextView
-            android:layout_width="wrap_content"
+       <android.support.v7.widget.CardView
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           app:cardCornerRadius="8dp"
+           app:cardElevation="8dp">
+           <LinearLayout
+               android:background="@drawable/rec_gradient"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:orientation="vertical"
+               android:gravity="center">
+           <TextView
+               android:textColor="@color/secondaryColor"
+             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Matrerial"
-            android:textSize="14dp"/>
-
+            android:textSize="25dp"/>
+           </LinearLayout>
+       </android.support.v7.widget.CardView>
         <RadioGroup
             android:id="@+id/matrerialSelect"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:gravity="center"
-            android:layout_marginBottom="14dp">
+            android:layout_marginBottom="14dp"
+            android:paddingLeft="50dp">
             <RadioButton android:id="@+id/radio_inutil0"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -56,18 +71,31 @@
                 android:text="Mudou A Minha Vida"/>
         </RadioGroup>
 
-        <TextView
-            android:layout_width="wrap_content"
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Networking"
-            android:textSize="14dp" />
-
+            app:cardCornerRadius="8dp"
+            app:cardElevation="8dp">
+            <LinearLayout
+                android:background="@drawable/rec_gradient"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center">
+                <TextView
+                    android:textColor="@color/secondaryColor"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Cachorro"
+                    android:textSize="25dp"/>
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
         <RadioGroup
             android:id="@+id/networkingSelect"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:gravity="center"
+            android:paddingLeft="50dp"
             android:layout_marginBottom="14dp">
             <RadioButton android:id="@+id/radio_inutil"
                 android:layout_width="wrap_content"
@@ -91,18 +119,32 @@
                 android:text="Posso Roubar Um Banco E Sair Ilezo"/>
         </RadioGroup>
 
-        <TextView
-            android:layout_width="wrap_content"
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Ajuda"
-            android:textSize="14dp" />
+            app:cardCornerRadius="8dp"
+            app:cardElevation="8dp">
+            <LinearLayout
+                android:background="@drawable/rec_gradient"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center">
+                <TextView
+                    android:textColor="@color/secondaryColor"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Cachorro2"
+                    android:textSize="25dp"/>
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
 
         <RadioGroup
             android:id="@+id/ajudaSelect"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:gravity="center"
+            android:paddingLeft="50dp"
             android:layout_marginBottom="14dp">
             <RadioButton android:id="@+id/radio_inuti2"
                 android:layout_width="wrap_content"
@@ -126,18 +168,32 @@
                 android:text="Me fez passar de ano e me encontrou um trabalho"/>
         </RadioGroup>
 
-        <TextView
-            android:layout_width="wrap_content"
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Conhecimento"
-            android:textSize="14dp" />
+            app:cardCornerRadius="8dp"
+            app:cardElevation="8dp">
+            <LinearLayout
+                android:background="@drawable/rec_gradient"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center">
+                <TextView
+                    android:textColor="@color/secondaryColor"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Cachorro3"
+                    android:textSize="25dp"/>
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
 
         <RadioGroup
             android:id="@+id/conhecimentoSelect"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:gravity="center"
+            android:paddingLeft="50dp"
             android:layout_marginBottom="14dp">
             <RadioButton android:id="@+id/radio_inuti3"
                 android:layout_width="wrap_content"
@@ -161,18 +217,32 @@
                 android:text="Mestre"/>
         </RadioGroup>
 
-        <TextView
-            android:layout_width="wrap_content"
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Assiduidade"
-            android:textSize="14dp" />
+            app:cardCornerRadius="8dp"
+            app:cardElevation="8dp">
+            <LinearLayout
+                android:background="@drawable/rec_gradient"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center">
+                <TextView
+                    android:textColor="@color/secondaryColor"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Cachorro2"
+                    android:textSize="25dp"/>
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
 
         <RadioGroup
             android:id="@+id/assiduidadeSelect"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:gravity="center"
+            android:paddingLeft="50dp"
             android:layout_marginBottom="14dp">
             <RadioButton android:id="@+id/radio_inuti4"
                 android:layout_width="wrap_content"
@@ -193,8 +263,16 @@
             <RadioButton android:id="@+id/radio_mudou_a_minha_vida4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Moblilia da Escola"/>
+                android:text="Moblilia da Escola"
+                />
         </RadioGroup>
+        <Button
+            android:background="@color/secondaryColor"
+            android:id="@+id/button2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Votar!"
+            android:layout_marginBottom="20dp"/>
     </LinearLayout>
 
 </ScrollView>
