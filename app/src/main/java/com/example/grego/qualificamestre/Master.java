@@ -12,63 +12,51 @@ public class Master implements Serializable{
     public Master() {
     }
 
-    public Master(String name, String institution, String grade, List<String> voters) {
-        this.Nome = name;
-        this.Institution = institution;
-        this.Grade = grade;
+    public Master(String name, String institution, String grade, String id) {
+        this.id = id;
+        this.nome = name;
+        this.institution = institution;
         this.Voters = new ArrayList<>();
     }
 
-    private String Nome;
-    private String Institution;
-    private String Grade;
-    private List<String> Voters;
-    private int VotersCount;
+    private String id;
+    private String nome;
+    private String institution;
+    private List<AlunoVoto> Voters;
 
     public int getVotersCount() {
         return Voters.size();
     }
 
-    public void setVotersCount(int votersCount) {
-        VotersCount = votersCount;
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getNome() {
-        return Nome;
+        return nome;
     }
 
     public void setNome(String nome) {
-        Nome = nome;
+        this.nome = nome;
     }
 
     public String getInstitution() {
-        return Institution;
+        return institution;
     }
 
     public void setInstitution(String institution) {
-        Institution = institution;
+        this.institution = institution;
     }
 
-    public String getGrade() {
-        return Grade;
-    }
-
-    public void setGrade(String grade) {
-        Grade = grade;
-    }
-
-    public List<String> getVoters() {
+    public List<AlunoVoto> getVoters() {
         return Voters;
     }
 
-    public void setVoters(List<String> voters) {
+    public void setVoters(List<AlunoVoto> voters) {
         Voters = voters;
     }
-
-
-
-
-
-
-
 }

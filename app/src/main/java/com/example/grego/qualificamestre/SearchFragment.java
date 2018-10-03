@@ -99,6 +99,23 @@ public class SearchFragment extends Fragment implements View.OnClickListener{
 
             searchQuery.addListenerForSingleValueEvent(valueEventListener);
 
+            ValueEventListener valueEventListener = new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    for (DataSnapshot professores: dataSnapshot.getChildren()
+                            ) {
+                        Master master = professores.getValue(Master.class);
+                        master.setId(dataSnapshot.getKey());
+                        masterList.add(master);
+                    }
+                    mSearchAdapter.notifyDataSetChanged();
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                }
+            };
 
         }
 
@@ -114,6 +131,7 @@ public class SearchFragment extends Fragment implements View.OnClickListener{
             for (DataSnapshot professores: dataSnapshot.getChildren()
                     ) {
                 Master master = professores.getValue(Master.class);
+                master.setId(dataSnapshot.getKey());
                 masterList.add(master);
             }
             mSearchAdapter.notifyDataSetChanged();

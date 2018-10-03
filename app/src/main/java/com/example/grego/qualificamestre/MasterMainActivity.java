@@ -22,8 +22,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 public class MasterMainActivity extends AppCompatActivity implements OnFragmentCardClickListener{
 
@@ -70,9 +73,27 @@ public class MasterMainActivity extends AppCompatActivity implements OnFragmentC
 //                        .setAction("Action", null).show();
 //            }
 //        });
-
+//        List<AlunoVoto> listAluno = new ArrayList<>();
+//        AlunoVoto alunoVoto1 = new AlunoVoto();
+//        alunoVoto1.setId("dkaskyerkhqwhrkasl");
+//        alunoVoto1.setAssiduidade(4);
+//        alunoVoto1.setConteudo(3);
+//        alunoVoto1.setDidatica(5);
+//        alunoVoto1.setFlexibilidade(3);
+//        alunoVoto1.setTemperamento(2);
+//
+//        listAluno.add(alunoVoto1);
+//
+//        Master master = new Master();
+//        master.setId("hhhhhhhh");
+//        master.setNome("Mancuso");
+//        master.setInstitution("Infnet");
+//        master.setVoters(listAluno);
+//
+//        FirebaseDatabase mref = FirebaseDatabase.getInstance();
+//
+//        mref.getReference("Professores").child("kldjsalkdjlskajdlk").setValue(master);
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -100,11 +121,11 @@ public class MasterMainActivity extends AppCompatActivity implements OnFragmentC
     public void onCardClick(Master master) {
         Intent intent;
 
-        intent = new Intent(this, MainActivity.class);
+        intent = new Intent(this, MestrePerfilActivity.class);
 
-        intent.putExtra("Master_OBJ", master);
+        intent.putExtra("MasterId", master.getId());
 
-        Toast.makeText(this, "GG ZOU GALERETE :" + master.toString() , Toast.LENGTH_SHORT).show();
+//        Toast.makeText(this, "GG ZOU GALERETE :" + master.toString() , Toast.LENGTH_SHORT).show();
 
         startActivity(intent);
 

@@ -1,141 +1,166 @@
 package com.example.grego.qualificamestre;
 
 import android.content.Intent;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import static java.lang.Float.parseFloat;
+
 public class MestrePerfilActivity extends AppCompatActivity {
 
-    private Mestre mestreTeste=new Mestre();
+    private FirebaseAuth mAuth;
+    String userId;
 
-    AlunoVoto alunoLogado=new AlunoVoto();
+    private Master master;
+    float SomaparaMedia = 0;
 
-    private boolean ALunoVotou=false;
+    FirebaseDatabase db = FirebaseDatabase.getInstance();
 
-    private final int numeroDeQuestoes = 5;
-
-    private int matrerial=0;
-    private int networking=0;
-    private int ajuda=0;
-    private int conhecimentosExtra=0;
-    private int assiduidade=0;
-
-    //private Intent intent;
-
-    private TextView nomeTextView;
-    private TextView votosTextView;
-    private TextView instituicoesTextView;
-    private TextView disciplinasTextView;
-    private TextView notaFinalTextView;
-    private TextView matrerialTextView;
-    private TextView networkingTextView;
-    private TextView ajudaTextView;
-    private TextView conhecimentosExtraTextView;
-    private TextView assiduidadeTextView;
-
+    private TextView Nome, Instituição, Didatica, Conteudo, Flexibilidade, Temperamento, Assiduidade, Votos, Media;
     private Button votar;
-    private Button modificarVoto;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mestre_perfil);
 
-        nomeTextView= (TextView) findViewById(R.id.nomeProf);
-        votosTextView= (TextView) findViewById(R.id.numeroDeVotos);
-        instituicoesTextView= (TextView) findViewById(R.id.instituicoes);
-        disciplinasTextView= (TextView) findViewById(R.id.disciplinas);
-        notaFinalTextView= (TextView) findViewById(R.id.profNota);
-        matrerialTextView= (TextView) findViewById(R.id.matrerial);
-        networkingTextView= (TextView) findViewById(R.id.networking);
-        ajudaTextView= (TextView) findViewById(R.id.ajuda);
-        conhecimentosExtraTextView= (TextView) findViewById(R.id.conhecimento);
-        assiduidadeTextView= (TextView) findViewById(R.id.assiduidade);
+       votar = findViewById(R.id.Btn_votar);
 
-        votar=(Button) findViewById(R.id.votar);
-        modificarVoto=(Button) findViewById(R.id.mudarVoto);
+        mAuth = FirebaseAuth.getInstance();
 
-        //Todo: Fazer funcção que pege o Professor do FB (verção FINAL)
-        //Todo: Pegar id do aluno Logado(verção FINAL)
+        Nome = findViewById(R.id.NomedoProfessor);
+        Instituição = findViewById(R.id.NomeInstituicao);
+        Didatica = findViewById(R.id.didatica);
+        Conteudo = findViewById(R.id.conteudo);
+        Flexibilidade = findViewById(R.id.flexibilidade);
+        Temperamento = findViewById(R.id.temperamento);
+        Assiduidade = findViewById(R.id.assiduidade);
+        Votos = findViewById(R.id.votos);
+        Media = findViewById(R.id.NotaFinal);
 
-        List<AlunoVoto> alunosJaVotados= new ArrayList<>();
+        Intent intent = getIntent();
 
-        //alunoLogado= new AlunoVoto("0");
+        String masterId = intent.getStringExtra("MasterId");
 
-        if (savedInstanceState == null) {
-            Intent intentGeter = getIntent();
-            Bundle extras = intentGeter.getExtras();
-            if(extras == null) {
-                alunoLogado= new AlunoVoto("0");
-            } else {
-                alunoLogado= (AlunoVoto) intentGeter.getSerializableExtra("VotoJaFeito");
-                alunosJaVotados.add(alunoLogado);
+        Query searchQuery = FirebaseDatabase.getInstance()
+                .getReference("Professores")
+                .orderByChild("id")
+                .equalTo(masterId);
+
+
+        searchQuery.addListenerForSingleValueEvent(valueEventListener);
+
+        userId = mAuth.getCurrentUser().getUid().toString();
+    }
+
+    ValueEventListener valueEventListener = new ValueEventListener() {
+        @Override
+        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+            for (DataSnapshot professores : dataSnapshot.getChildren()
+                    ) {
+                master = professores.getValue(Master.class);
+                master.setId(dataSnapshot.getKey());
+                PreencherPerfil();
+                if (IsAlunoVoted()) {
+                    votar.setVisibility(View.INVISIBLE);
+                }
             }
+        }
+
+        @Override
+        public void onCancelled(@NonNull DatabaseError databaseError) {
+
+        }
+    };
+
+
+    //CALCULO DA MÉDIA
+    public void PreencherPerfil() {
+//        int numeroDeAlunosqueVotaram = master.getVotersCount();
+//        float mediaFinal = ((matrerial + networking + ajuda + conhecimentosExtra + assiduidade) / numeroDeAlunosqueVotaram) / numeroDeQuestoes;
+
+        Nome.setText(master.getNome());
+        if (master.getVoters() != null) {
+            Votos.setText(String.valueOf(master.getVotersCount()));
         } else {
-            alunoLogado= (AlunoVoto) savedInstanceState.getSerializable("VotoJaFeito");
-            alunosJaVotados.add(alunoLogado);
+            Votos.setText("0");
         }
-        //alunosJaVotados.add(alunoLogado);
-        AlunoVoto aluno1=new AlunoVoto("1",3,3,3,3,3);
-        AlunoVoto aluno2=new AlunoVoto("2",3,3,3,3,3);
-        AlunoVoto aluno3=new AlunoVoto("3",3,3,3,3,3);
-        alunosJaVotados.add(aluno1);
-        alunosJaVotados.add(aluno2);
-        alunosJaVotados.add(aluno3);
-        //Todo:Fazer um if para ver se o intend esta nulo ou nao se nao adicionar alunoLogado na lista de ja votados (verção TESTE)
-        //mestreTeste.alunosQueVotaram=alunosJaVotados;
-        mestreTeste = new Mestre("1","Mestre Infnetisimo","Infnet","ads",alunosJaVotados);
+        Instituição.setText(master.getInstitution());
 
-        for (AlunoVoto aluno: mestreTeste.getAlunosQueVotaram()){
-            if (aluno.getId()==alunoLogado.getId()){
-                ALunoVotou=true;
+        Didatica.setText(String.valueOf(CalculeDidatica()));
+        Temperamento.setText(String.valueOf(CalculeTemperamento()));
+        Conteudo.setText(String.valueOf(CalculeConteudo()));
+        Assiduidade.setText(String.valueOf(CalculeAssiduidade()));
+        Flexibilidade.setText(String.valueOf(CalculeFlexibilidade()));
+        Media.setText(String.valueOf(SomaparaMedia / (master.getVoters().size() * 5)));
+    }
+
+    public float CalculeDidatica(){
+        float soma = 0;
+        for (AlunoVoto voto:master.getVoters()) {
+            soma += voto.getDidatica();
+        }
+        SomaparaMedia += soma;
+        return soma / master.getVoters().size();
+    }
+
+    public float CalculeFlexibilidade(){
+        float soma = 0;
+        for (AlunoVoto voto:master.getVoters()) {
+            soma += voto.getFlexibilidade();
+        }
+        SomaparaMedia += soma;
+        return soma / master.getVoters().size();
+    }
+
+    public float CalculeConteudo(){
+        float soma = 0;
+        for (AlunoVoto voto:master.getVoters()) {
+            soma += voto.getConteudo();
+        }
+        SomaparaMedia += soma;
+        return soma / master.getVoters().size();
+    }
+
+    public float CalculeTemperamento(){
+        float soma = 0;
+        for (AlunoVoto voto:master.getVoters()) {
+            soma += voto.getTemperamento();
+        }
+        SomaparaMedia += soma;
+        return soma / master.getVoters().size();
+    }
+
+    public float CalculeAssiduidade(){
+        float soma = 0;
+        for (AlunoVoto voto:master.getVoters()) {
+            soma += voto.getAssiduidade();
+        }
+        SomaparaMedia += soma;
+        return soma / master.getVoters().size();
+    }
+    public boolean IsAlunoVoted(){
+        for (AlunoVoto voto:master.getVoters()) {
+            if(voto.getId().equals(userId)){
+                return true;
             }
-            matrerial+=aluno.getMatrerial();
-            networking+=aluno.getNetworking();
-            ajuda+=aluno.getAjuda();
-            conhecimentosExtra+=aluno.getConhecimentosExtra();
-            assiduidade+=aluno.getAssiduidade();
         }
-
-        if (ALunoVotou==false){
-            votar.setVisibility(View.VISIBLE);
-        }else {
-            modificarVoto.setVisibility(View.VISIBLE);
-        }
-
-        int numeroDeAlunosqueVotaram=mestreTeste.getAlunosQueVotaram().size();
-        int mediaFinal = ((matrerial+networking+ajuda+conhecimentosExtra+assiduidade)/numeroDeAlunosqueVotaram)/numeroDeQuestoes;
-
-        nomeTextView.setText(mestreTeste.nome);
-        votosTextView.setText(""+mestreTeste.getAlunosQueVotaram().size());
-        instituicoesTextView.setText(mestreTeste.getInstituição());
-        disciplinasTextView.setText(mestreTeste.getDisciplina());
-        notaFinalTextView.setText(""+mediaFinal);
-        matrerialTextView.setText(""+matrerial/numeroDeAlunosqueVotaram);
-        networkingTextView.setText(""+networking/numeroDeAlunosqueVotaram);
-        ajudaTextView.setText(""+ajuda/numeroDeAlunosqueVotaram);
-        conhecimentosExtraTextView.setText(""+conhecimentosExtra/numeroDeAlunosqueVotaram);
-        assiduidadeTextView.setText(""+assiduidade/numeroDeAlunosqueVotaram);
+        return false;
     }
-
-    public void votar(View view) {
-        Intent intent = new Intent(MestrePerfilActivity.this, VotoFormularioActivity.class);
-        intent.putExtra("nomeProf", mestreTeste.getNome());
-        startActivity(intent);
-    }
-
-//    public void mudarVoto(View view) {
-//        //Todo:Caso ja exista o voto proucurar ele no FB por id em Mestre e enviar para a proxima activity ou envia so o id do aluno logado (verção FINAL)
-//        intent = new Intent(this, VotoFormularioActivity.class);
-//        intent.putExtra("VotoJaFeito", (Serializable) alunoLogado);
-//        intent.putExtra("nomeProf", mestreTeste.getNome());
-//        startActivity(intent);
-//    }
 }

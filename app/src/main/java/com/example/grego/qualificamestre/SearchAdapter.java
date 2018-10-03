@@ -65,11 +65,11 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.SearchView
 
             mvh.searchName.setText(master.getNome());
             mvh.searchInstitution.setText(master.getInstitution());
-            if(master.getGrade() != null){
-                mvh.searchGrade.setText(master.getGrade().toString());
-            }else {
-                mvh.searchGrade.setText("0");
-            }
+//            if(master.getGrade() != null){
+//                mvh.searchGrade.setText(master.getGrade().toString());
+//            }else {
+//                mvh.searchGrade.setText("0");
+//            }
         }
     }
 
@@ -98,7 +98,7 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.SearchView
                 @Override
                 public void onClick(View v) {
                     if (fragmentCardClickListener != null){
-                        Master master = masterList.get(getAdapterPosition());
+                         Master master = masterList.get(getAdapterPosition());
                         fragmentCardClickListener.onCardClick(master);
                     }
                 }

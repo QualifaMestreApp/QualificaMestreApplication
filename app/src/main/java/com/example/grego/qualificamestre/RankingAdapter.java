@@ -152,7 +152,9 @@ public class RankingAdapter extends RecyclerView.Adapter<RankingAdapter.MasterVi
 
         snapshotList.add(0,dataSnapshot);
         if(dataSnapshot.getValue(Master.class).getVoters() != null){
-            masterList.add(dataSnapshot.getValue(Master.class));
+            Master master = dataSnapshot.getValue(Master.class);
+   //         master.setId(dataSnapshot.getKey().toString());
+            masterList.add(master);
         }
         masterList.sort(Comparator.comparing(Master::getVotersCount).reversed());
 

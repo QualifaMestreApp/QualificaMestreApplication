@@ -6,244 +6,202 @@
     android:layout_height="match_parent"
     tools:context=".MestrePerfilActivity"
     android:orientation="vertical"
-    android:layout_margin="14dp"
     android:gravity="center">
 
-    <TextView
-        android:text="Votos: "
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_toLeftOf="@+id/numeroDeVotos"
-        />
-
-    <TextView
-        android:id="@+id/numeroDeVotos"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignRight="@+id/nomeProf"
-        android:text="xxxx"
-        />
-
-    <TextView
-        android:id="@+id/nomeProf"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="Nome do professor(a)"
-        android:textSize="28dp"
-        android:layout_below="@+id/numeroDeVotos"
-        android:layout_marginBottom="7dp"/>
-
-
     <LinearLayout
-        android:id="@+id/notaHolder"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/nomeProf"
-        android:gravity="center"
-        android:orientation="horizontal"
-        android:layout_marginBottom="21dp">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Nota Final : "
-            android:textSize="21dp"/>
-        <TextView
-            android:id="@+id/profNota"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="X"
-            android:textSize="21dp"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text=" / 5"
-            android:textSize="21dp"/>
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <ImageView
+            android:background="@drawable/cad_gradient_prof"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"/>
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/profDetalhes"
+        android:layout_centerVertical="true"
+        android:layout_marginTop="10dp"
+        android:id="@+id/layout_Input"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_centerHorizontal="true"
+        android:background="#FFF"
+        android:padding="20dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/notaHolder"
-        android:gravity="center"
-        android:layout_marginBottom="21dp">
+        android:orientation="vertical"
+        android:layout_below="@+id/NomeInstituicao">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="100"
+            android:gravity="center">
+
+            <TextView
+                android:textColor="@color/secondaryDarkColor"
+                android:text="votos: "
+                android:textSize="20sp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:textAlignment="center"
+                />
+
+            <TextView
+                android:layout_weight="1"
+                android:textAlignment="center"
+                android:id="@+id/votos"
+                android:textSize="20sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingRight="25dp"
+                android:inputType="text" />
+            <TextView
+                android:layout_marginLeft="30dp"
+                android:textSize="20sp"
+                android:textColor="@color/secondaryDarkColor"
+                android:text="Média Final: "
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:textAlignment="center"
+                />
+
+            <TextView
+                android:layout_weight="1"
+                android:textAlignment="center"
+                android:id="@+id/NotaFinal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingRight="25dp"
+                android:textSize="20sp"
+                android:inputType="text" />
+        </LinearLayout>
 
         <TextView
-            android:id="@+id/instituicoesHead"
-            android:layout_width="wrap_content"
+            android:layout_marginTop="20dp"
+            android:textColor="@color/secondaryDarkColor"
+            android:text="Assiduidade"
             android:layout_height="wrap_content"
-            android:layout_below="@id/notaHolder"
-            android:text="Instituições: " />
-
-        <TextView
-            android:id="@+id/instituicoes"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_toRightOf="@id/instituicoesHead"
-            android:layout_alignBaseline="@id/instituicoesHead"
-            android:text="Instituição1\ninsti2\ninsti3"
-            android:layout_marginRight="10dp"
+            android:layout_width="match_parent"
+            android:textAlignment="center"
             />
 
         <TextView
-            android:id="@+id/disciplinasHead"
-            android:layout_width="wrap_content"
+            android:textAlignment="center"
+            android:id="@+id/assiduidade"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_toRightOf="@+id/instituicoes"
-            android:layout_alignBaseline="@id/instituicoesHead"
-            android:text="Disciplinas: "/>
+            android:textSize="20sp"
+            android:paddingRight="25dp"
+            android:drawableStart="@drawable/ic_watch"
+            android:inputType="text" />
+        <TextView
+            android:textColor="@color/secondaryDarkColor"
+            android:text="Temperamento"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:textAlignment="center"
+            />
 
         <TextView
-            android:id="@+id/disciplinas"
-            android:layout_width="wrap_content"
+            android:textAlignment="center"
+            android:id="@+id/temperamento"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_toRightOf="@id/disciplinasHead"
-            android:layout_alignBaseline="@id/disciplinasHead"
-            android:text="disciplina1\ndisciplina2\ndisciplina3"/>
+            android:paddingRight="25dp"
+            android:textSize="20sp"
+            android:drawableStart="@drawable/ic_sentiment"
+            android:inputType="text" />
+
+        <TextView
+            android:textColor="@color/secondaryDarkColor"
+            android:text="Conteudo"
+
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:textAlignment="center"
+            />
+
+        <TextView
+            android:textAlignment="center"
+            android:id="@+id/conteudo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingRight="25dp"
+            android:textSize="20sp"
+            android:drawableStart="@drawable/ic_book"
+            android:inputType="text" />
+
+        <TextView
+            android:textColor="@color/secondaryDarkColor"
+            android:text="Flexibilidade"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:textAlignment="center"
+            />
+
+        <TextView
+            android:textAlignment="center"
+            android:id="@+id/flexibilidade"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingRight="25dp"
+            android:textSize="20sp"
+            android:drawableStart="@drawable/ic_assistant"
+            android:inputType="text" />
+
+        <TextView
+            android:textColor="@color/secondaryDarkColor"
+            android:text="Didatica"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:textAlignment="center"
+            />
+
+        <TextView
+            android:textAlignment="center"
+            android:id="@+id/didatica"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingRight="25dp"
+            android:textSize="20sp"
+            android:drawableStart="@drawable/ic_school"
+            android:inputType="text" />
+
+        <Button
+            android:id="@+id/Btn_votar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/rec_gradient"
+            android:text="Votar!"
+            android:textColor="@color/secondaryColor"
+            android:visibility="visible" />
 
     </LinearLayout>
 
+    <TextView
+        android:layout_marginTop="10dp"
+        android:textSize="30sp"
+        android:textColor="#FFF"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/logo"
+        android:text="Nome do Professor"
+        android:id="@+id/NomedoProfessor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
 
     <TextView
-        android:id="@+id/mediaDeNotas"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/profDetalhes"
-        android:text="Media De Notas: "
-        android:textSize="21dp"
-        android:layout_marginBottom="7dp"/>
 
-    <TextView
-        android:id="@+id/matrerialHead"
+        android:textSize="20sp"
+        android:textColor="#FFF"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/NomedoProfessor"
+        android:text="Nome do Professor"
+        android:id="@+id/NomeInstituicao"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/mediaDeNotas"
-        android:text="Matrerial: "
-        android:layout_marginBottom="7dp"/>
-
-    <TextView
-        android:id="@+id/matrerial"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_toRightOf="@id/matrerialHead"
-        android:layout_alignBaseline="@id/matrerialHead"
-        android:text="X"/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text=" / 5"
-        android:layout_toRightOf="@id/matrerial"
-        android:layout_alignBaseline="@id/matrerialHead"/>
-
-    <TextView
-        android:id="@+id/networkingHead"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/matrerialHead"
-        android:text="Networking: "
-        android:layout_marginBottom="7dp"/>
-
-    <TextView
-        android:id="@+id/networking"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_toRightOf="@id/networkingHead"
-        android:layout_alignBaseline="@id/networkingHead"
-        android:text="X"/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text=" / 5"
-        android:layout_toRightOf="@id/networking"
-        android:layout_alignBaseline="@id/networkingHead"/>
-
-    <TextView
-        android:id="@+id/ajudaHead"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/networkingHead"
-        android:text="Assistência: "
-        android:layout_marginBottom="7dp"/>
-
-    <TextView
-        android:id="@+id/ajuda"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_toRightOf="@id/ajudaHead"
-        android:layout_alignBaseline="@id/ajudaHead"
-        android:text="X"/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text=" / 5"
-        android:layout_toRightOf="@id/ajuda"
-        android:layout_alignBaseline="@id/ajudaHead"/>
-
-    <TextView
-        android:id="@+id/conhecimentoHead"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/ajudaHead"
-        android:text="Conhecimento: "
-        android:layout_marginBottom="7dp"/>
-
-    <TextView
-        android:id="@+id/conhecimento"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_toRightOf="@id/conhecimentoHead"
-        android:layout_alignBaseline="@id/conhecimentoHead"
-        android:text="X"/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text=" / 5"
-        android:layout_toRightOf="@id/conhecimento"
-        android:layout_alignBaseline="@id/conhecimentoHead"/>
-
-    <TextView
-        android:id="@+id/assiduidadeHead"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/conhecimentoHead"
-        android:text="Assiduidade: "
-        android:layout_marginBottom="7dp"/>
-
-    <TextView
-        android:id="@+id/assiduidade"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_toRightOf="@id/assiduidadeHead"
-        android:layout_alignBaseline="@id/assiduidadeHead"
-        android:text="X"/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text=" / 5"
-        android:layout_toRightOf="@id/assiduidade"
-        android:layout_alignBaseline="@id/assiduidadeHead"/>
-
-    <android.support.v7.widget.AppCompatButton
-        android:id="@+id/votar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Votar"
-        android:layout_below="@id/assiduidadeHead"
-        android:visibility="gone"
-        android:onClick="votar"/>
-    <android.support.v7.widget.AppCompatButton
-        android:id="@+id/mudarVoto"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Mudar Voto"
-        android:layout_below="@id/assiduidadeHead"
-        android:visibility="gone"
-        android:onClick="mudarVoto"/>
+        android:layout_height="wrap_content"/>
 </RelativeLayout>

@@ -2,27 +2,24 @@ package com.example.grego.qualificamestre;
 
 public class AlunoVoto {
 
-    public AlunoVoto(){}
-
-    public AlunoVoto(String id){
-        this.id = id;
+    public AlunoVoto() {
     }
 
-    public AlunoVoto(String id,int matrerial, int networking,int ajuda,int conhecimentosExtra,int assiduidade){
+    public AlunoVoto(String id, int didatica, int conteudo, int flexibilidade, int temperamento, int assiduidade) {
         this.id = id;
-        this.matrerial = matrerial;
-        this.networking = networking;
-        this.ajuda = ajuda;
-        this.conhecimentosExtra = conhecimentosExtra;
+        this.didatica = didatica;
+        this.conteudo = conteudo;
+        this.flexibilidade = flexibilidade;
+        this.temperamento = temperamento;
         this.assiduidade = assiduidade;
     }
 
     private String id;
     //de 0 a 5
-    private int matrerial;
-    private int networking;
-    private int ajuda;
-    private int conhecimentosExtra;
+    private int didatica;
+    private int conteudo;
+    private int flexibilidade;
+    private int temperamento;
     private int assiduidade;
 
     public String getId() {
@@ -33,36 +30,36 @@ public class AlunoVoto {
         this.id = id;
     }
 
-    public int getMatrerial() {
-        return matrerial;
+    public int getDidatica() {
+        return didatica;
     }
 
-    public void setMatrerial(int matrerial) {
-        this.matrerial = matrerial;
+    public void setDidatica(int didatica) {
+        this.didatica = didatica;
     }
 
-    public int getNetworking() {
-        return networking;
+    public int getConteudo() {
+        return conteudo;
     }
 
-    public void setNetworking(int networking) {
-        this.networking = networking;
+    public void setConteudo(int conteudo) {
+        this.conteudo = conteudo;
     }
 
-    public int getAjuda() {
-        return ajuda;
+    public int getFlexibilidade() {
+        return flexibilidade;
     }
 
-    public void setAjuda(int ajuda) {
-        this.ajuda = ajuda;
+    public void setFlexibilidade(int flexibilidade) {
+        this.flexibilidade = flexibilidade;
     }
 
-    public int getConhecimentosExtra() {
-        return conhecimentosExtra;
+    public int getTemperamento() {
+        return temperamento;
     }
 
-    public void setConhecimentosExtra(int conhecimentosExtra) {
-        this.conhecimentosExtra = conhecimentosExtra;
+    public void setTemperamento(int temperamento) {
+        this.temperamento = temperamento;
     }
 
     public int getAssiduidade() {

@@ -89,15 +89,18 @@ public class LoginActivity extends AppCompatActivity {
         FirebaseUser currentUser = mAuth.getCurrentUser();
 
         if (currentUser != null) {
-            Intent intent = new Intent(LoginActivity.this, MasterMainActivity.class);
-            startActivity(intent);
+            if(IsProfessor(currentUser.getUid().toString())){
+                Intent intent = new Intent(LoginActivity.this, MasterMainActivity.class);
+                startActivity(intent);
+            }
+
+
         } else {
             // No user is signed in
         }
     }
 
-    public void goProf(View view) {
-        intent = new Intent(this, MestrePerfilActivity.class);
-        startActivity(intent);
+    private boolean IsProfessor(String userId) {
+        return true;
     }
 }

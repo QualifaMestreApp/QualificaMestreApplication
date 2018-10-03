@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
             nome.setText(master.getNome().toString());
             escola.setText(master.getInstitution().toString());
 
-            grade.setText(master.getGrade().toString());
+            //grade.setText(master.getGrade().toString());
         }
 
 
