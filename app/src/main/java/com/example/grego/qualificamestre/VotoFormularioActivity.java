@@ -9,6 +9,11 @@ import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 
 public class VotoFormularioActivity extends AppCompatActivity {
 
@@ -35,11 +40,7 @@ public class VotoFormularioActivity extends AppCompatActivity {
     private int conhecimentosExtra=0;
     private int assiduidade=0;
 
-    //Todo:Pegar id de quem esta logado pelo FB
-    String idAlunoLogado;
-
-    private String nomeProf = "Error";
-    private AlunoVoto alunoLogado = new AlunoVoto();
+    private String nomeProf = "Error De Nome";
 
     String alunoId;
     String profId;
@@ -100,9 +101,43 @@ public class VotoFormularioActivity extends AppCompatActivity {
         });
 
         Intent intentGeter = getIntent();
-        alunoId = FirebaseAuth.getInstance().getCurrentUser().getUid() ;
-        profId = getIntent().getExtras().getString("MasterId");;
+        alunoId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        profId = getIntent().getExtras().getString("MasterId");
 
+        Query searchQuery = (Query) FirebaseDatabase.getInstance()
+                .getReference("Professores")
+                .orderByChild("id")
+                .equalTo(profId)
+                .limitToFirst(1)
+                .addChildEventListener(new ChildEventListener() {
+
+                    @Override
+                    public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                        Master mestre = dataSnapshot.getValue(Master.class);
+                        nomeProf= "Votando Em: "+mestre.getNome();
+                    }
+
+
+                    @Override
+                    public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+                    }
+
+                    @Override
+                    public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+                    }
+
+                    @Override
+                    public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+
+                    }
+                });
     }
 
     public void terminarVoto(View view) {
@@ -183,6 +218,7 @@ public class VotoFormularioActivity extends AppCompatActivity {
             AlunoVoto votoConcluido = new AlunoVoto(alunoId,matrerial,networking,ajuda,conhecimentosExtra,assiduidade);
 
             //Todo:Adicionar votoConcluido na lista de alunos votos em professosr
+
         }
     }
 }
