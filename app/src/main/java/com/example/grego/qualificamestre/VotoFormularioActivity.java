@@ -104,7 +104,7 @@ public class VotoFormularioActivity extends AppCompatActivity {
     }
 
     public void terminarVoto(View view) {
-        if (radioButton0.isChecked()==false&&radioButton1.isChecked()==false&&radioButton2.isChecked()==false&&radioButton3.isChecked()==false&&radioButton4.isChecked()==false){
+        if (radioButton0.isChecked()==false||radioButton1.isChecked()==false||radioButton2.isChecked()==false||radioButton3.isChecked()==false||radioButton4.isChecked()==false){
             Toast.makeText(this, "Por favor Preencha todos os campos", Toast.LENGTH_LONG).show();
         }else{
             switch (radioButton0.getId()) {
