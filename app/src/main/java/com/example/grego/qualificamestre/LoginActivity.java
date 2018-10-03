@@ -25,6 +25,7 @@ public class LoginActivity extends AppCompatActivity {
     TextView forgotPassword;
     private FirebaseAuth mAuth;
 
+    private Intent intent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -93,5 +94,10 @@ public class LoginActivity extends AppCompatActivity {
         } else {
             // No user is signed in
         }
+    }
+
+    public void goProf(View view) {
+        intent = new Intent(this, MestrePerfilActivity.class);
+        startActivity(intent);
     }
 }

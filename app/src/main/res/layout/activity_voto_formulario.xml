@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".VotoFormularioActivity"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_margin="7dp">
+
+
+
+        <TextView
+            android:id="@+id/nompeProf"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nome Prof"
+            android:textSize="21dp"
+            android:layout_marginBottom="21dp"/>
+       <android.support.v7.widget.CardView
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           app:cardCornerRadius="8dp"
+           app:cardElevation="8dp">
+           <LinearLayout
+               android:background="@drawable/rec_gradient"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:orientation="vertical"
+               android:gravity="center">
+           <TextView
+               android:textColor="@color/secondaryColor"
+             android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Matrerial"
+            android:textSize="25dp"/>
+           </LinearLayout>
+       </android.support.v7.widget.CardView>
+        <RadioGroup
+            android:id="@+id/matrerialSelect"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginBottom="14dp"
+            android:paddingLeft="50dp">
+            <RadioButton android:id="@+id/radio_inutil0"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Inutil"/>
+            <RadioButton android:id="@+id/radio_antiguado0"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Antiguado"/>
+            <RadioButton android:id="@+id/radio_razoavel0"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Razoavel"/>
+            <RadioButton android:id="@+id/radio_bom0"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Bom"/>
+            <RadioButton android:id="@+id/radio_mudou_a_minha_vida0"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Mudou A Minha Vida"/>
+        </RadioGroup>
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="8dp">
+            <LinearLayout
+                android:background="@drawable/rec_gradient"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center">
+                <TextView
+                    android:textColor="@color/secondaryColor"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Cachorro"
+                    android:textSize="25dp"/>
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
+        <RadioGroup
+            android:id="@+id/networkingSelect"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingLeft="50dp"
+            android:layout_marginBottom="14dp">
+            <RadioButton android:id="@+id/radio_inutil1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Inutil"/>
+            <RadioButton android:id="@+id/radio_antiguado1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Falei Com Alguma Coisa"/>
+            <RadioButton android:id="@+id/radio_razoavel1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Falei Com Pessoas"/>
+            <RadioButton android:id="@+id/radio_bom1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Fiz Amizades"/>
+            <RadioButton android:id="@+id/radio_mudou_a_minha_vida1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Posso Roubar Um Banco E Sair Ilezo"/>
+        </RadioGroup>
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="8dp">
+            <LinearLayout
+                android:background="@drawable/rec_gradient"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center">
+                <TextView
+                    android:textColor="@color/secondaryColor"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Cachorro2"
+                    android:textSize="25dp"/>
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
+
+        <RadioGroup
+            android:id="@+id/ajudaSelect"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingLeft="50dp"
+            android:layout_marginBottom="14dp">
+            <RadioButton android:id="@+id/radio_inutil2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Inutil"/>
+            <RadioButton android:id="@+id/radio_antiguado2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nem podria me ajudar a encontrar a cabeça"/>
+            <RadioButton android:id="@+id/radio_razoavel2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Falou para proucurar no google"/>
+            <RadioButton android:id="@+id/radio_bom2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Sentou e ajutou a me encontrar"/>
+            <RadioButton android:id="@+id/radio_mudou_a_minha_vida2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Me fez passar de ano e me encontrou um trabalho"/>
+        </RadioGroup>
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="8dp">
+            <LinearLayout
+                android:background="@drawable/rec_gradient"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center">
+                <TextView
+                    android:textColor="@color/secondaryColor"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Cachorro3"
+                    android:textSize="25dp"/>
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
+
+        <RadioGroup
+            android:id="@+id/conhecimentoSelect"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingLeft="50dp"
+            android:layout_marginBottom="14dp">
+            <RadioButton android:id="@+id/radio_inutil3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Inutil"/>
+            <RadioButton android:id="@+id/radio_antiguado3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Pior que os Alunos"/>
+            <RadioButton android:id="@+id/radio_razoavel3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nariz de papel"/>
+            <RadioButton android:id="@+id/radio_bom3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Oratorio Exemplar"/>
+            <RadioButton android:id="@+id/radio_mudou_a_minha_vida3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Mestre"/>
+        </RadioGroup>
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="8dp">
+            <LinearLayout
+                android:background="@drawable/rec_gradient"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center">
+                <TextView
+                    android:textColor="@color/secondaryColor"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Cachorro2"
+                    android:textSize="25dp"/>
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
+
+        <RadioGroup
+            android:id="@+id/assiduidadeSelect"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingLeft="50dp"
+            android:layout_marginBottom="14dp">
+            <RadioButton android:id="@+id/radio_inutil4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Fantasma"/>
+            <RadioButton android:id="@+id/radio_antiguado4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Deja Vu"/>
+            <RadioButton android:id="@+id/radio_razoavel4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nunca falta"/>
+            <RadioButton android:id="@+id/radio_bom4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Flash"/>
+            <RadioButton android:id="@+id/radio_mudou_a_minha_vida4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Moblilia da Escola"
+                />
+        </RadioGroup>
+        <Button
+            android:background="@color/secondaryColor"
+            android:id="@+id/button2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Votar!"
+            android:layout_marginBottom="20dp"
+            android:onClick="terminarVoto"/>
+    </LinearLayout>
+
+</ScrollView>
