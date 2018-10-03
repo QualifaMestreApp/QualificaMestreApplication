@@ -228,7 +228,9 @@ public class VotoFormularioActivity extends AppCompatActivity {
 
             //Todo:Adicionar votoConcluido na lista de alunos votos em professosr
             DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference("Professores");
-            mDatabase.child(profId).child("voters").setValue(votoConcluido);
+           // mDatabase.child("users").child(userId).setValue(user);
+            //mDatabase.child(profId).child("voters").setValue(votoConcluido);
+            mDatabase.child(profId).child("voters").child(alunoId).setValue(votoConcluido);
         }
     }
 }
