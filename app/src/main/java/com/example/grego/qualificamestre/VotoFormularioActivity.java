@@ -230,7 +230,6 @@ public class VotoFormularioActivity extends AppCompatActivity {
             DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference("Professores");
            // mDatabase.child("users").child(userId).setValue(user);
             //mDatabase.child(profId).child("voters").setValue(votoConcluido);
-            mDatabase.child(profId).child("voters").child(alunoId).setValue(votoConcluido);
         }
     }
 }

@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class Master implements Serializable{
+public class Master{
 
     public Master() {
     }

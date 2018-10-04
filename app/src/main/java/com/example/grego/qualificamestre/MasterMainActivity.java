@@ -121,7 +121,7 @@ public class MasterMainActivity extends AppCompatActivity implements OnFragmentC
     public void onCardClick(Master master) {
         Intent intent;
 
-        intent = new Intent(this, MestrePerfilActivity.class);
+        intent = new Intent(MasterMainActivity.this, MestrePerfilActivity.class);
 
         intent.putExtra("MasterId", master.getId());
 
