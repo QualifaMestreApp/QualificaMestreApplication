@@ -60,5 +60,4 @@ public class RankingFragment extends Fragment{
         }
     }
 
-
 }

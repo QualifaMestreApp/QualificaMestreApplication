@@ -66,14 +66,8 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.SearchView
 
             mvh.searchName.setText(master.getNome());
             mvh.searchInstitution.setText(master.getInstitution());
-            mvh.searchVoters.setText(master.getVoters().toString());
+            mvh.searchVoters.setText(String.valueOf(master.getVotersCount()));
 
-
-//            if(master.getGrade() != null){
-//                mvh.searchGrade.setText(master.getGrade().toString());
-//            }else {
-//                mvh.searchGrade.setText("0");
-//            }
         }
     }
 

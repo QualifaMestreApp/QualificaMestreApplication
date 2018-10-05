@@ -27,10 +27,9 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
-public class SearchFragment extends Fragment implements View.OnClickListener{
+public class SearchFragment extends Fragment implements View.OnClickListener {
 
-    private FirebaseDatabase firebaseInstance;
-    private DatabaseReference firebaseReference;
+    private DatabaseReference mDatabase;
     private String MASTER_PATH = "Professores";
     private Button search;
     private RecyclerView mMasterSearchRecyclerView;
@@ -49,6 +48,8 @@ public class SearchFragment extends Fragment implements View.OnClickListener{
         mMasterSearchRecyclerView = rootView.findViewById(R.id.search_recycler_view);
         mMasterSearchRecyclerView.setHasFixedSize(true);
 
+        mDatabase = FirebaseDatabase.getInstance().getReference("Votos");
+
         mMasterRvLayoutManager = new LinearLayoutManager(getActivity());
         mMasterSearchRecyclerView.setLayoutManager(mMasterRvLayoutManager);
 
@@ -61,8 +62,6 @@ public class SearchFragment extends Fragment implements View.OnClickListener{
         search.setOnClickListener(this);
 
 
-
-
         return rootView;
     }
 
@@ -70,10 +69,9 @@ public class SearchFragment extends Fragment implements View.OnClickListener{
     public void onAttach(Context context) {
         super.onAttach(context);
 
-        if (context instanceof OnFragmentCardClickListener){
+        if (context instanceof OnFragmentCardClickListener) {
             fragmentCardClickListener = (OnFragmentCardClickListener) context;
-        }
-        else {
+        } else {
             Toast.makeText(context, "Deu Ruim", Toast.LENGTH_SHORT).show();
             throw new ClassCastException();
         }
@@ -86,49 +84,67 @@ public class SearchFragment extends Fragment implements View.OnClickListener{
 
         String search = searchText.getText().toString();
 
-        firebaseInstance = FirebaseDatabase.getInstance();
-//        firebaseReference = firebaseInstance.getReference(MASTER_PATH);
-
 
         if (search != "") {
 
             Query searchQuery = FirebaseDatabase.getInstance()
                     .getReference("Professores")
                     .orderByChild("nome")
-                    .equalTo(search);
+                    .startAt(search).endAt(search+"\uf8ff");
 
-            searchQuery.addListenerForSingleValueEvent(valueEventListener);
+            searchQuery.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                        mDatabase.child(snapshot.getKey()).addListenerForSingleValueEvent(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                int size = (int) dataSnapshot.getChildrenCount();
+                                Master master = new Master();
+                                master = snapshot.getValue(Master.class);
+                                master.setId(snapshot.getKey());
+                                master.setVotersCount(size);
+                                masterList.add(master);
+                                //mSearchAdapter.notifyDataSetChanged();
+                                mSearchAdapter = new SearchAdapter(masterList, fragmentCardClickListener);
+                                mMasterSearchRecyclerView.setAdapter(mSearchAdapter);
+                            }
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError databaseError) {
+                            }
+
+                        });
+
+                    }
+                }
 
 
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                }
+            });
         }
 
-        if (masterList != null){
-        mSearchAdapter = new SearchAdapter(masterList, fragmentCardClickListener);
-        mMasterSearchRecyclerView.setAdapter(mSearchAdapter);
-        }
     }
 
-    ValueEventListener valueEventListener = new ValueEventListener() {
-        @Override
-        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-            for (DataSnapshot professores: dataSnapshot.getChildren()
-                    ) {
-                Master master = professores.getValue(Master.class);
-                master.setId(dataSnapshot.getKey().toString());
-                masterList.add(master);
-            }
-            mSearchAdapter.notifyDataSetChanged();
-        }
-
-        @Override
-        public void onCancelled(@NonNull DatabaseError databaseError) {
-
-        }
-    };
-
-
-
-
+//    ValueEventListener valueEventListener = new ValueEventListener() {
+//        @Override
+//        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+//            for (DataSnapshot professores: dataSnapshot.getChildren()
+//                    ) {
+//                Master master = professores.getValue(Master.class);
+//                master.setId(dataSnapshot.getKey().toString());
+//                masterList.add(master);
+//            }
+//            mSearchAdapter.notifyDataSetChanged();
+//        }
+//
+//        @Override
+//        public void onCancelled(@NonNull DatabaseError databaseError) {
+//
+//        }
+//    };
 
 
 }

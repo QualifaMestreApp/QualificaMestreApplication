@@ -15,7 +15,6 @@ public class AlunoVoto {
     }
 
     private String id;
-    //de 0 a 5
     private int didatica;
     private int conteudo;
     private int flexibilidade;

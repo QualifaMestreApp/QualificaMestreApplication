@@ -38,7 +38,7 @@
                android:textColor="@color/secondaryColor"
              android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Matrerial"
+            android:text="Didática"
             android:textSize="25dp"/>
            </LinearLayout>
        </android.support.v7.widget.CardView>
@@ -52,23 +52,23 @@
             <RadioButton android:id="@+id/radio_inutil0"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Inutil"/>
+                android:text="1 - Finjo que entendi para evitar constrangimento"/>
             <RadioButton android:id="@+id/radio_antiguado0"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Antiguado"/>
+                android:text="2 - Não sabe ensinar"/>
             <RadioButton android:id="@+id/radio_razoavel0"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Razoavel"/>
+                android:text="3 - Razoavel"/>
             <RadioButton android:id="@+id/radio_bom0"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Bom"/>
+                android:text="4 - Passa bem o conteúdo"/>
             <RadioButton android:id="@+id/radio_mudou_a_minha_vida0"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Mudou A Minha Vida"/>
+                android:text="5 - Aprendo tudo só de olhar para ele"/>
         </RadioGroup>
 
         <android.support.v7.widget.CardView
@@ -86,7 +86,7 @@
                     android:textColor="@color/secondaryColor"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Cachorro"
+                    android:text="Conteúdo"
                     android:textSize="25dp"/>
             </LinearLayout>
         </android.support.v7.widget.CardView>
@@ -100,23 +100,23 @@
             <RadioButton android:id="@+id/radio_inutil1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Inutil"/>
+                android:text="1 - Se dormir não perco nada"/>
             <RadioButton android:id="@+id/radio_antiguado1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Falei Com Alguma Coisa"/>
+                android:text="2 - Quase não da conteudo"/>
             <RadioButton android:id="@+id/radio_razoavel1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Falei Com Pessoas"/>
+                android:text="3 - Desinteressante e/ou desatualizado"/>
             <RadioButton android:id="@+id/radio_bom1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Fiz Amizades"/>
+                android:text="4 - Coerente, atualizado e interessante"/>
             <RadioButton android:id="@+id/radio_mudou_a_minha_vida1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Posso Roubar Um Banco E Sair Ilezo"/>
+                android:text="Wikipédia!"/>
         </RadioGroup>
 
         <android.support.v7.widget.CardView
@@ -134,7 +134,7 @@
                     android:textColor="@color/secondaryColor"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Cachorro2"
+                    android:text="Flexibilidade"
                     android:textSize="25dp"/>
             </LinearLayout>
         </android.support.v7.widget.CardView>
@@ -149,23 +149,23 @@
             <RadioButton android:id="@+id/radio_inutil2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Inutil"/>
+                android:text="1 - Extremamente intransigente"/>
             <RadioButton android:id="@+id/radio_antiguado2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Nem podria me ajudar a encontrar a cabeça"/>
+                android:text="2 - Muito rigido"/>
             <RadioButton android:id="@+id/radio_razoavel2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Falou para proucurar no google"/>
+                android:text="3 - Na medida"/>
             <RadioButton android:id="@+id/radio_bom2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Sentou e ajutou a me encontrar"/>
+                android:text="4 - Flex"/>
             <RadioButton android:id="@+id/radio_mudou_a_minha_vida2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Me fez passar de ano e me encontrou um trabalho"/>
+                android:text="5 - Total Flex"/>
         </RadioGroup>
 
         <android.support.v7.widget.CardView
@@ -183,7 +183,7 @@
                     android:textColor="@color/secondaryColor"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Cachorro3"
+                    android:text="Temperamento"
                     android:textSize="25dp"/>
             </LinearLayout>
         </android.support.v7.widget.CardView>
@@ -198,23 +198,23 @@
             <RadioButton android:id="@+id/radio_inutil3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Inutil"/>
+                android:text="1 - Impossivel de lidar"/>
             <RadioButton android:id="@+id/radio_antiguado3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Pior que os Alunos"/>
+                android:text="2 - Perde a compostura"/>
             <RadioButton android:id="@+id/radio_razoavel3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Nariz de papel"/>
+                android:text="3 - Não tem muita paciencia"/>
             <RadioButton android:id="@+id/radio_bom3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Oratorio Exemplar"/>
+                android:text="4 - Muito tranquilo, bom temperamento"/>
             <RadioButton android:id="@+id/radio_mudou_a_minha_vida3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Mestre"/>
+                android:text="5 - Quase um buda!"/>
         </RadioGroup>
 
         <android.support.v7.widget.CardView
@@ -232,7 +232,7 @@
                     android:textColor="@color/secondaryColor"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Cachorro2"
+                    android:text="Assiduidade"
                     android:textSize="25dp"/>
             </LinearLayout>
         </android.support.v7.widget.CardView>
@@ -247,33 +247,32 @@
             <RadioButton android:id="@+id/radio_inutil4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Fantasma"/>
+                android:text="1 - Turista"/>
             <RadioButton android:id="@+id/radio_antiguado4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Deja Vu"/>
+                android:text="2 - Quase nunca aparece"/>
             <RadioButton android:id="@+id/radio_razoavel4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Nunca falta"/>
+                android:text="3 - Falta bastante"/>
             <RadioButton android:id="@+id/radio_bom4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Flash"/>
+                android:text="4 - Falta poucas vezes"/>
             <RadioButton android:id="@+id/radio_mudou_a_minha_vida4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Moblilia da Escola"
+                android:text="5 - Pontualidade britanica!"
                 />
         </RadioGroup>
         <Button
             android:background="@color/secondaryColor"
-            android:id="@+id/button2"
+            android:id="@+id/confirmar_voto"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Votar!"
-            android:layout_marginBottom="20dp"
-            android:onClick="terminarVoto"/>
+            android:layout_marginBottom="20dp"/>
     </LinearLayout>
 
 </ScrollView>

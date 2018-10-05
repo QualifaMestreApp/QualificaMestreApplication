@@ -21,6 +21,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -44,6 +45,7 @@ public class MasterMainActivity extends AppCompatActivity implements OnFragmentC
      * The {@link ViewPager} that will host the section contents.
      */
     private ViewPager mViewPager;
+    private FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,34 +67,7 @@ public class MasterMainActivity extends AppCompatActivity implements OnFragmentC
         mViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
         tabLayout.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(mViewPager));
 
-//        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-//        fab.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-//                        .setAction("Action", null).show();
-//            }
-//        });
-//        List<AlunoVoto> listAluno = new ArrayList<>();
-//        AlunoVoto alunoVoto1 = new AlunoVoto();
-//        alunoVoto1.setId("dkaskyerkhqwhrkasl");
-//        alunoVoto1.setAssiduidade(4);
-//        alunoVoto1.setConteudo(3);
-//        alunoVoto1.setDidatica(5);
-//        alunoVoto1.setFlexibilidade(3);
-//        alunoVoto1.setTemperamento(2);
-//
-//        listAluno.add(alunoVoto1);
-//
-//        Master master = new Master();
-//        master.setId("hhhhhhhh");
-//        master.setNome("Mancuso");
-//        master.setInstitution("Infnet");
-//        master.setVoters(listAluno);
-//
-//        FirebaseDatabase mref = FirebaseDatabase.getInstance();
-//
-//        mref.getReference("Professores").child("kldjsalkdjlskajdlk").setValue(master);
+
     }
 
     @Override
@@ -111,7 +86,9 @@ public class MasterMainActivity extends AppCompatActivity implements OnFragmentC
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
-            return true;
+            mAuth.getInstance().signOut();
+            Intent intent = new Intent(MasterMainActivity.this, LoginActivity.class);
+            startActivity(intent);
         }
 
         return super.onOptionsItemSelected(item);

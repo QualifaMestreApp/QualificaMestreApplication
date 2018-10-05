@@ -28,9 +28,9 @@
                         </option>
                         <option name="values">
                           <map>
-                            <entry key="opacityPercent" value="70" />
-                            <entry key="outputName" value="ic_assistant" />
-                            <entry key="sourceFile" value="C:\Users\Grego" />
+                            <entry key="assetSourceType" value="FILE" />
+                            <entry key="outputName" value="ic_teste" />
+                            <entry key="sourceFile" value="C:\Users\Grego\Desktop\teste.svg" />
                           </map>
                         </option>
                       </PersistentState>

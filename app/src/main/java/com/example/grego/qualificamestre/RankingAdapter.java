@@ -13,12 +13,13 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
-public class RankingAdapter extends RecyclerView.Adapter<RankingAdapter.MasterViewHolder>{
+public class RankingAdapter extends RecyclerView.Adapter<RankingAdapter.MasterViewHolder> {
 
 
     private List<DataSnapshot> snapshotList;
@@ -28,6 +29,7 @@ public class RankingAdapter extends RecyclerView.Adapter<RankingAdapter.MasterVi
     private String MASTER_PATH = "Professores";
     private int NORMAL_CARD = 1;
     private int EMPTY_CARD = 2;
+    private int size = 0;
     private OnFragmentCardClickListener fragmentCardClickListener;
 
 
@@ -38,25 +40,27 @@ public class RankingAdapter extends RecyclerView.Adapter<RankingAdapter.MasterVi
         firebaseInstance = FirebaseDatabase.getInstance();
         firebaseReference = firebaseInstance.getReference(MASTER_PATH);
 
-        firebaseReference.addChildEventListener(new ChildEventListener() {
+        firebaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
-            public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-                addUser(dataSnapshot);
-            }
-
-            @Override
-            public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-                notifyDataSetChanged();
-            }
-
-            @Override
-            public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
-
-            }
-
-            @Override
-            public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    firebaseReference = firebaseInstance.getReference("Votos").child(snapshot.getKey());
+                    firebaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                            size = (int) dataSnapshot.getChildrenCount();
+                            Master master = snapshot.getValue(Master.class);
+                            master.setVotersCount(size);
+                            master.setId(snapshot.getKey());
+                            masterList.add(master);
+                            masterList.sort(Comparator.comparing(Master::getVotersCount).reversed());
+                            notifyDataSetChanged();
+                        }
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError databaseError) {
+                        }
+                    });
+                }
             }
 
             @Override
@@ -67,8 +71,8 @@ public class RankingAdapter extends RecyclerView.Adapter<RankingAdapter.MasterVi
     }
 
     @Override
-    public int getItemViewType(int position){
-        if(snapshotList.size() == 0){
+    public int getItemViewType(int position) {
+        if (masterList.size() == 0) {
             return EMPTY_CARD;
         }
         return NORMAL_CARD;
@@ -79,11 +83,10 @@ public class RankingAdapter extends RecyclerView.Adapter<RankingAdapter.MasterVi
     public MasterViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
         if (viewType == NORMAL_CARD) {
-            View masterCard = LayoutInflater.from(parent.getContext()).inflate(R.layout.card_mastercard,parent,false);
+            View masterCard = LayoutInflater.from(parent.getContext()).inflate(R.layout.card_mastercard, parent, false);
             return new MasterViewHolder(masterCard);
-        }
-        else {
-            View emptyCard = LayoutInflater.from(parent.getContext()).inflate(R.layout.empty_layout,parent,false);
+        } else {
+            View emptyCard = LayoutInflater.from(parent.getContext()).inflate(R.layout.empty_layout, parent, false);
             return new MasterViewHolder(emptyCard);
         }
 
@@ -93,11 +96,7 @@ public class RankingAdapter extends RecyclerView.Adapter<RankingAdapter.MasterVi
     public void onBindViewHolder(@NonNull MasterViewHolder holder, int position) {
 
         int viewType = holder.getItemViewType();
-        if(viewType == NORMAL_CARD){
-
-            //DataSnapshot masterSnapshot = snapshotList.get(position);
-
-            //Master master = masterSnapshot.getValue(Master.class);
+        if (viewType == NORMAL_CARD) {
 
             Master master = masterList.get(position);
 
@@ -111,13 +110,13 @@ public class RankingAdapter extends RecyclerView.Adapter<RankingAdapter.MasterVi
 
     @Override
     public int getItemCount() {
-        if(masterList.size() == 0){
+        if (masterList.size() == 0) {
             return 1;
         }
         return masterList.size();
     }
 
-    public class MasterViewHolder extends RecyclerView.ViewHolder{
+    public class MasterViewHolder extends RecyclerView.ViewHolder {
 
 
         TextView name, institution, voters;
@@ -133,39 +132,21 @@ public class RankingAdapter extends RecyclerView.Adapter<RankingAdapter.MasterVi
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    if (fragmentCardClickListener != null){
+                    if (fragmentCardClickListener != null) {
                         Master master = masterList.get(getAdapterPosition());
                         fragmentCardClickListener.onCardClick(master);
                     }
                 }
             });
 
-
         }
-
 
     }
 
-
-
-    public void addUser(DataSnapshot dataSnapshot){
-
-        snapshotList.add(0,dataSnapshot);
-        if(dataSnapshot.getValue(Master.class).getVoters() != null){
-            Master master = dataSnapshot.getValue(Master.class);
-   //         master.setId(dataSnapshot.getKey().toString());
-            masterList.add(master);
-        }
-        masterList.sort(Comparator.comparing(Master::getVotersCount).reversed());
-
-        notifyDataSetChanged();
-
 }
 
 
 
-
-}
 
 
 

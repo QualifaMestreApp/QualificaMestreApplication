@@ -66,10 +66,10 @@ public class CadastroProfessor extends Fragment implements View.OnClickListener 
                                                 Master master = new Master();
                                                 master.setNome(inome.getText().toString());
                                                 master.setInstitution(iinstituicao.getText().toString());
-                                                master.setVoters(new ArrayList<>());
                                                 myRef.child(user.getUid()).setValue(master);
                                                 Toast.makeText(getActivity(), "Conta criada! Bem vindo!.", Toast.LENGTH_SHORT).show();
-                                                Intent intent = new Intent(getActivity(), MasterMainActivity.class);
+                                                Intent intent = new Intent(getActivity(), MestrePerfilActivity.class);
+                                                startActivity(intent);
                                             } else {
                                                 Toast.makeText(getActivity(), "Erro!." + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                                             }

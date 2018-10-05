@@ -16,6 +16,11 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -24,6 +29,7 @@ public class LoginActivity extends AppCompatActivity {
     Button cadastrar, login;
     TextView forgotPassword;
     private FirebaseAuth mAuth;
+    Boolean Isprofessor;
 
     private Intent intent;
 
@@ -88,19 +94,29 @@ public class LoginActivity extends AppCompatActivity {
         // Check if user is signed in (non-null) and update UI accordingly.
         FirebaseUser currentUser = mAuth.getCurrentUser();
 
-        if (currentUser != null) {
-            if(IsProfessor(currentUser.getUid().toString())){
-                Intent intent = new Intent(LoginActivity.this, MasterMainActivity.class);
-                startActivity(intent);
-            }
+        if(currentUser != null){
+            Query searchQuery = FirebaseDatabase.getInstance()
+                    .getReference("Professores")
+                    .orderByKey();
 
+            searchQuery.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    if(dataSnapshot.hasChild(currentUser.getUid())){
+                        Intent intent = new Intent(LoginActivity.this, MestrePerfilActivity.class);
+                        intent.putExtra("MasterId", currentUser.getUid());
+                        startActivity(intent);
+                    }
+                    else {
+                        Intent intent = new Intent(LoginActivity.this, MasterMainActivity.class);
+                        startActivity(intent);
+                    }
+                }
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
 
-        } else {
-            // No user is signed in
+                }
+            });
         }
-    }
-
-    private boolean IsProfessor(String userId) {
-        return true;
     }
 }

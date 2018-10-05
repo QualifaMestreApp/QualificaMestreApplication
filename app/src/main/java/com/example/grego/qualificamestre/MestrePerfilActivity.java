@@ -12,6 +12,7 @@ import android.widget.TextView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
@@ -29,18 +30,21 @@ public class MestrePerfilActivity extends AppCompatActivity {
 
     private Master master;
     float SomaparaMedia = 0;
-
-    FirebaseDatabase db = FirebaseDatabase.getInstance();
+    DatabaseReference mdb;
 
     private TextView Nome, Instituição, Didatica, Conteudo, Flexibilidade, Temperamento, Assiduidade, Votos, Media;
     private Button votar;
+    List<AlunoVoto> votos;
+    String masterId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mestre_perfil);
 
-       votar = findViewById(R.id.Btn_votar);
+        votar = findViewById(R.id.Btn_votar);
+
+        mdb = FirebaseDatabase.getInstance().getReference("Votos");
 
         mAuth = FirebaseAuth.getInstance();
 
@@ -56,108 +60,127 @@ public class MestrePerfilActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
 
-        String masterId = intent.getStringExtra("MasterId");
-
-        Query searchQuery = FirebaseDatabase.getInstance()
-                .getReference("Professores")
-                .orderByChild("id")
-                .equalTo(masterId);
+        masterId = intent.getStringExtra("MasterId");
 
 
-        searchQuery.addListenerForSingleValueEvent(valueEventListener);
+        mdb.child(masterId).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                votos = new ArrayList<>();
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    AlunoVoto voto = snapshot.getValue(AlunoVoto.class);
+                    votos.add(voto);
+                }
+                GetMasterPerfil();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
 
         userId = mAuth.getCurrentUser().getUid().toString();
+
+        if(userId.equals(masterId)){
+            votar.setText("Logout");
+        }
     }
 
-    ValueEventListener valueEventListener = new ValueEventListener() {
-        @Override
-        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-            for (DataSnapshot professores : dataSnapshot.getChildren()
-                    ) {
-                master = professores.getValue(Master.class);
-                master.setId(dataSnapshot.getKey());
+    private void GetMasterPerfil() {
+        mdb = FirebaseDatabase.getInstance().getReference("Professores");
+        mdb.child(masterId).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                master = dataSnapshot.getValue(Master.class);
                 PreencherPerfil();
-                if (IsAlunoVoted()) {
-                    votar.setVisibility(View.INVISIBLE);
-                }
             }
-        }
 
-        @Override
-        public void onCancelled(@NonNull DatabaseError databaseError) {
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
 
-        }
-    };
-
+            }
+        });
+    }
 
     //CALCULO DA MÉDIA
     public void PreencherPerfil() {
-//        int numeroDeAlunosqueVotaram = master.getVotersCount();
-//        float mediaFinal = ((matrerial + networking + ajuda + conhecimentosExtra + assiduidade) / numeroDeAlunosqueVotaram) / numeroDeQuestoes;
 
         Nome.setText(master.getNome());
-        if (master.getVoters() != null) {
-            Votos.setText(String.valueOf(master.getVotersCount()));
-        } else {
-            Votos.setText("0");
-        }
-        Instituição.setText(master.getInstitution());
 
-        Didatica.setText(String.valueOf(CalculeDidatica()));
-        Temperamento.setText(String.valueOf(CalculeTemperamento()));
-        Conteudo.setText(String.valueOf(CalculeConteudo()));
-        Assiduidade.setText(String.valueOf(CalculeAssiduidade()));
-        Flexibilidade.setText(String.valueOf(CalculeFlexibilidade()));
-        Media.setText(String.valueOf(SomaparaMedia / (master.getVoters().size() * 5)));
+        Votos.setText(String.valueOf(votos.size()));
+        Instituição.setText(master.getInstitution());
+        if(CalculeDidatica() > 0.0){
+            Didatica.setText(String.valueOf(CalculeDidatica()));
+        }
+        if(CalculeTemperamento() > 0.0) {
+            Temperamento.setText(String.valueOf(CalculeTemperamento()));
+        }
+        if(CalculeConteudo() > 0.0) {
+            Conteudo.setText(String.valueOf(CalculeConteudo()));
+        }
+        if(CalculeAssiduidade() > 0.0) {
+            Assiduidade.setText(String.valueOf(CalculeAssiduidade()));
+        }
+        if(CalculeFlexibilidade() > 0.0) {
+            Flexibilidade.setText(String.valueOf(CalculeFlexibilidade()));
+        }
+        if(SomaparaMedia > 0.0){
+            Media.setText(String.valueOf((SomaparaMedia / (votos.size() * 5))/2));
+        }else{
+            Media.setText(String.valueOf(0.0));
+        }
+
     }
 
-    public float CalculeDidatica(){
+    public float CalculeDidatica() {
         float soma = 0;
-        for (AlunoVoto voto:master.getVoters()) {
+        for (AlunoVoto voto : votos) {
             soma += voto.getDidatica();
         }
         SomaparaMedia += soma;
-        return soma / master.getVoters().size();
+        return soma / votos.size();
     }
 
-    public float CalculeFlexibilidade(){
+    public float CalculeFlexibilidade() {
         float soma = 0;
-        for (AlunoVoto voto:master.getVoters()) {
+        for (AlunoVoto voto : votos) {
             soma += voto.getFlexibilidade();
         }
         SomaparaMedia += soma;
-        return soma / master.getVoters().size();
+        return soma / votos.size();
     }
 
-    public float CalculeConteudo(){
+    public float CalculeConteudo() {
         float soma = 0;
-        for (AlunoVoto voto:master.getVoters()) {
+        for (AlunoVoto voto : votos) {
             soma += voto.getConteudo();
         }
         SomaparaMedia += soma;
-        return soma / master.getVoters().size();
+        return soma / votos.size();
     }
 
-    public float CalculeTemperamento(){
+    public float CalculeTemperamento() {
         float soma = 0;
-        for (AlunoVoto voto:master.getVoters()) {
+        for (AlunoVoto voto : votos) {
             soma += voto.getTemperamento();
         }
         SomaparaMedia += soma;
-        return soma / master.getVoters().size();
+        return soma / votos.size();
     }
 
-    public float CalculeAssiduidade(){
+    public float CalculeAssiduidade() {
         float soma = 0;
-        for (AlunoVoto voto:master.getVoters()) {
+        for (AlunoVoto voto : votos) {
             soma += voto.getAssiduidade();
         }
         SomaparaMedia += soma;
-        return soma / master.getVoters().size();
+        return soma / votos.size();
     }
-    public boolean IsAlunoVoted(){
-        for (AlunoVoto voto:master.getVoters()) {
-            if(voto.getId().equals(userId)){
+
+    public boolean IsAlunoVoted() {
+        for (AlunoVoto voto : votos) {
+            if (voto.getId().equals(userId)) {
                 return true;
             }
         }
@@ -165,14 +188,22 @@ public class MestrePerfilActivity extends AppCompatActivity {
     }
 
     public void votarButton(View view) {
-        Intent intent = getIntent();
 
-        String masterId = intent.getStringExtra("MasterId");
-        //String currentFirebaseUser = FirebaseAuth.getInstance().getCurrentUser().getUid() ;
-        Intent intentParaVoto = new Intent(this, VotoFormularioActivity.class);
+        if(userId.equals(masterId)){
+            mAuth.getInstance().signOut();
+            Intent intent = new Intent(MestrePerfilActivity.this, LoginActivity.class);
+            startActivity(intent);
+        }else{
+            Intent intent = getIntent();
 
-        intentParaVoto.putExtra("MasterId", masterId);
-        intentParaVoto.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        startActivity(intentParaVoto);
+            String masterId = intent.getStringExtra("MasterId");
+            //String currentFirebaseUser = FirebaseAuth.getInstance().getCurrentUser().getUid() ;
+            Intent intentParaVoto = new Intent(this, VotoFormularioActivity.class);
+
+            intentParaVoto.putExtra("MasterId", masterId);
+            intentParaVoto.putExtra("MasterNome", master.getNome());
+            intentParaVoto.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intentParaVoto);
+        }
     }
 }

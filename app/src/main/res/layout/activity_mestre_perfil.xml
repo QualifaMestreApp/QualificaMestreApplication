@@ -41,12 +41,12 @@
 
             <TextView
                 android:textColor="@color/secondaryDarkColor"
-                android:text="votos: "
+                android:text="Votos: "
                 android:textSize="20sp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
-                android:textAlignment="center"
+                android:paddingLeft="10dp"
                 />
 
             <TextView
@@ -54,12 +54,12 @@
                 android:textAlignment="center"
                 android:id="@+id/votos"
                 android:textSize="20sp"
+                android:text="0"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:paddingRight="25dp"
+                android:paddingRight="10dp"
                 android:inputType="text" />
             <TextView
-                android:layout_marginLeft="30dp"
                 android:textSize="20sp"
                 android:textColor="@color/secondaryDarkColor"
                 android:text="Média Final: "
@@ -73,9 +73,10 @@
                 android:layout_weight="1"
                 android:textAlignment="center"
                 android:id="@+id/NotaFinal"
+                android:text="0"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:paddingRight="25dp"
+                android:paddingRight="10dp"
                 android:textSize="20sp"
                 android:inputType="text" />
         </LinearLayout>
@@ -95,6 +96,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="20sp"
+            android:text="0"
             android:paddingRight="25dp"
             android:drawableStart="@drawable/ic_watch"
             android:inputType="text" />
@@ -113,6 +115,7 @@
             android:layout_height="wrap_content"
             android:paddingRight="25dp"
             android:textSize="20sp"
+            android:text="0"
             android:drawableStart="@drawable/ic_sentiment"
             android:inputType="text" />
 
@@ -131,6 +134,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingRight="25dp"
+            android:text="0"
             android:textSize="20sp"
             android:drawableStart="@drawable/ic_book"
             android:inputType="text" />
@@ -149,6 +153,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingRight="25dp"
+            android:text="0"
             android:textSize="20sp"
             android:drawableStart="@drawable/ic_assistant"
             android:inputType="text" />
@@ -164,6 +169,7 @@
         <TextView
             android:textAlignment="center"
             android:id="@+id/didatica"
+            android:text="0"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingRight="25dp"

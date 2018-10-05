@@ -10,20 +10,24 @@ public class Master{
     public Master() {
     }
 
-    public Master(String name, String institution, String grade, String id) {
+    public Master(String name, String institution, String id) {
         this.id = id;
         this.nome = name;
         this.institution = institution;
-        this.voters = new ArrayList<>();
+        this.votersCount = 0;
     }
 
     private String id;
     private String nome;
     private String institution;
-    private List<AlunoVoto> voters;
+    private int votersCount;
 
     public int getVotersCount() {
-        return voters.size();
+        return votersCount;
+    }
+
+    public void setVotersCount(int votersCount) {
+        this.votersCount = votersCount;
     }
 
     public String getId() {
@@ -50,11 +54,4 @@ public class Master{
         this.institution = institution;
     }
 
-    public List<AlunoVoto> getVoters() {
-        return voters;
-    }
-
-    public void setVoters(List<AlunoVoto> voters) {
-        this.voters = voters;
-    }
-}
+ }
